@@ -24,6 +24,16 @@ module my_counter(
     input clock,
     input reset,
     input enable,
-    output [3:0] counter_output
+    output reg [3:0] counter_output
     );
+    
+    // Main logic
+    always @(posedge clock or posedge reset)
+        if (reset) begin
+            counter_output = 0;
+        end else if (enable)
+            begin
+            counter_output <= counter_output + 1;
+        end
+    
 endmodule
