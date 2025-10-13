@@ -37,7 +37,7 @@ module m3_1(
         input D0,
         input D1,
         input D2,
-        input S[0:1],
+        input [0:1]S,
         output Y
         );
         wire T1;
@@ -46,8 +46,8 @@ module m3_1(
 endmodule
 
 module m4_1(
-        input D[0:3],
-        input S[0:1],
+        input [0:3]D,
+        input [0:1]S,
         output Y
         );
         wire T1;
@@ -58,8 +58,8 @@ module m4_1(
 endmodule
 
 module m8_1(
-        input wire D[0:7],
-        input wire S[0:2],
+        input wire [0:7]D,
+        input wire [0:2]S,
         output Y
         );
         wire T1;
@@ -70,8 +70,8 @@ module m8_1(
 endmodule
 
 module m16_1(
-        input D[16],
-        input S[4],
+        input [0:15]D,
+        input [0:3]S,
         output Y
         );
         wire T1;
@@ -81,3 +81,9 @@ module m16_1(
         m21(Y, T1, T2, S[3]);
 endmodule
 
+module alu_1bit(
+        input [0:5]S,
+        input D
+        );
+        
+endmodule; 
