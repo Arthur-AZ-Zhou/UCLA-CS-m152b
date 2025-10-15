@@ -76,9 +76,9 @@ module m16_1(
         );
         wire T1;
         wire T2;
-        m81(T1, D[0:7], S[0:2]);
-        m81(T2, D[8:15], S[0:2]);
-        m21(Y, T1, T2, S[3]);
+        m8_1(T1, D[0:7], S[0:2]);
+        m8_1(T2, D[8:15], S[0:2]);
+        m2_1(Y, T1, T2, S[3]);
 endmodule
 
 module alu_1bit(
