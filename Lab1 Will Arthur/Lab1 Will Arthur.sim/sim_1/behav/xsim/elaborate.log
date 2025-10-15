@@ -1,12 +1,13 @@
 Vivado Simulator 2018.2
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 97ef5d9a221246a598ee6c0e678c34ad --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot m16_1_behav xil_defaultlib.m16_1 xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 97ef5d9a221246a598ee6c0e678c34ad --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot registertestbench_behav xil_defaultlib.registertestbench xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-ERROR: [VRFC 10-2538] module instantiation should have an instance name [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/lab1.v:79]
-ERROR: [VRFC 10-2063] Module <m4_1> not found while processing module instance <'Undefined'>
-ERROR: [VRFC 10-2063] Module <m4_1> not found while processing module instance <'Undefined'>
-ERROR: [VRFC 10-2063] Module <m2_1> not found while processing module instance <'Undefined'>
-ERROR: [VRFC 10-2538] module instantiation should have an instance name [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/lab1.v:80]
-ERROR: [VRFC 10-2063] Module <m2_1> not found while processing module instance <'Undefined'>
-ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.reg16
+Compiling module xil_defaultlib.registertestbench
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot registertestbench_behav
