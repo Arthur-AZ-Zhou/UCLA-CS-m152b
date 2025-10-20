@@ -35,7 +35,7 @@ module alu(
 
     wire add_cout, sub_cout;
     adder16 add_unit (.a(a), .b(b), .cin(0), .sum(add_out), .cout(add_cout));
-    subtract16 sub_unit (.a(a), .b(b), .out(sub_out));
+    subtract16 sub_unit (.a(a), .b(b), .out(sub_out), .cout(sub_cout));
 
     or16 or_unit (.a(a), .b(b), .out(or_out));
     and16 and_unit (.a(a), .b(b), .out(and_out));
@@ -69,7 +69,6 @@ module alu(
         .sel(ctrl),
         .out(s)
     );
-
     // zero flag
     assign zero = (s == 16'b0) ? 1'b1 : 1'b0;
 
@@ -78,15 +77,50 @@ module alu(
     wire ashiftl_sign = ashiftl_out[15];
     wire ashiftr_sign = ashiftr_out[15];
 
-    wire ovf_ashiftl = (ctrl == 4'b1100) && (a_sign != ashiftl_sign);
-    wire ovf_ashiftr = (ctrl == 4'b1110) && (a_sign != ashiftr_sign);
+   
+    wire ovf_ashiftl;
+    wire ovf_ashiftr;
+    
+    wire cond1;
+    wire cond2;
+    equal_4bit f1(cond1, ctrl, 4'b1100);
+    custom_xor f2(cond2, a_sign, ashiftl_sign);
+    and (of_ashiftl, cond1, cond2);
+    
+    wire condr_1;
+    wire condr_2;
+    equal_4bit f3(condr_1, ctrl, 4'b1110);
+    custom_xor f4(condr_2, a_sign, ashiftr_sign);
+    and (ovf_ashiftr, condr_1, condr_2);
 
-    assign overflow = ovf_ashiftl | ovf_ashiftr;
+    and(overflow, ovf_ashiftl, ovf_ashiftr, add_cout, sub_cout);
 
 endmodule
 
-
-
+module custom_xnor(
+    input a,
+    input b,
+    output y
+    );
+    wire noty;
+    xnor_elem custom_xnor(a, b, y);
+    not (noty, y);
+    
+module equal_4bit(
+    input A[3:0],
+    input B[3:0],
+    output Y
+    );
+    wire equals[3:0];
+    genvar i;
+    generate
+        for (i=0; i<4; i=i+1) begin
+            custom_xnor xnor_bit(equals[i], A[i], B[i]);
+        end
+    endgenerate
+    and final(Y, equals[0], equals[1], equals[2], equals[3]); 
+   
+   
 module m2_1(
     input D0,
     input D1,
@@ -115,8 +149,8 @@ module m2_1(
 endmodule
 
 module m4_1(
-    input [0:3] D,
-    input [0:1] S,
+    input [3:0] D,
+    input [1:0] S,
     output Y
 );
     wire T1, T2;
@@ -126,24 +160,24 @@ module m4_1(
 endmodule
 
 module m8_1(
-    input [0:7] D,
-    input [0:2] S,
+    input [7:0] D,
+    input [2:0] S,
     output Y
 );
     wire T1, T2;
-    m4_1 u1 (.D(D[0:3]), .S(S[0:1]), .Y(T1));
-    m4_1 u2 (.D(D[4:7]), .S(S[0:1]), .Y(T2));
+    m4_1 u1 (.D(D[3:0]), .S(S[1:0]), .Y(T1));
+    m4_1 u2 (.D(D[7:4]), .S(S[1:0]), .Y(T2));
     m2_1 u3 (.D0(T1), .D1(T2), .S(S[2]), .Y(Y));
 endmodule
 
 module m16_1(
-    input [0:15] D,
-    input [0:3] S,
+    input [15:0] D,
+    input [3:0] S,
     output Y
 );
     wire T1, T2;
-    m8_1 u1 (.D(D[0:7]), .S(S[0:2]), .Y(T1));
-    m8_1 u2 (.D(D[8:15]), .S(S[0:2]), .Y(T2));
+    m8_1 u1 (.D(D[7:0]), .S(S[2:0]), .Y(T1));
+    m8_1 u2 (.D(D[15:8]), .S(S[2:0]), .Y(T2));
     m2_1 u3 (.D0(T1), .D1(T2), .S(S[3]), .Y(Y));
 endmodule
 
@@ -279,14 +313,14 @@ endmodule
 module subtract16(
     input [15:0] a,
     input [15:0] b,
-    output [15:0] out
+    output [15:0] out,
+    output cout
     );
     
     wire [15:0] negB;
-    wire co;
     
     invert16 inv (.a(b), .out(negB));
-    adder16 sub (.a(a), .b(negB), .cin(0), .sum(out), .cout(co));
+    adder16 sub (.a(a), .b(negB), .cin(0), .sum(out), .cout(cout));
     
 endmodule
 
@@ -328,8 +362,9 @@ module sle16(
     );
     
     wire [15:0] sum;
+    wire garbage;
 
-    subtract16 sub (.a(a), .b(b), .cin(0), .sum(sum), .cout(co));
+    subtract16 sub (.a(a), .b(b), .out(sum), .cout(garbage));
     
     assign out = sum[15];
     

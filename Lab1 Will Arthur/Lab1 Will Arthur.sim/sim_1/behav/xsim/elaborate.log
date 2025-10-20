@@ -1,13 +1,42 @@
 Vivado Simulator 2018.2
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 97ef5d9a221246a598ee6c0e678c34ad --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot registertestbench_behav xil_defaultlib.registertestbench xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 97ef5d9a221246a598ee6c0e678c34ad --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot alutestbench_behav xil_defaultlib.alutestbench xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port cin [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v:37]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 16 for port b [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v:249]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port cin [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v:288]
+WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 16 for port b [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v:257]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.reg16
-Compiling module xil_defaultlib.registertestbench
+Compiling module xil_defaultlib.custom_xor
+Compiling module xil_defaultlib.adder
+Compiling module xil_defaultlib.adder16_default
+Compiling module xil_defaultlib.increment
+Compiling module xil_defaultlib.invert16
+Compiling module xil_defaultlib.subtract16
+Compiling module xil_defaultlib.or16
+Compiling module xil_defaultlib.and16
+Compiling module xil_defaultlib.decrement
+Compiling module xil_defaultlib.lshift_stage_1
+Compiling module xil_defaultlib.lshift_stage_2
+Compiling module xil_defaultlib.lshift_stage_4
+Compiling module xil_defaultlib.lshift_stage_8
+Compiling module xil_defaultlib.lshiftby
+Compiling module xil_defaultlib.rshift_stage_1
+Compiling module xil_defaultlib.rshift_stage_2
+Compiling module xil_defaultlib.rshift_stage_4
+Compiling module xil_defaultlib.rshift_stage_8
+Compiling module xil_defaultlib.rshiftby
+Compiling module xil_defaultlib.sle16
+Compiling module xil_defaultlib.m2_1
+Compiling module xil_defaultlib.m4_1
+Compiling module xil_defaultlib.m8_1
+Compiling module xil_defaultlib.m16_1
+Compiling module xil_defaultlib.mux12to1_16bit_default
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.alutestbench
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot registertestbench_behav
+Built simulation snapshot alutestbench_behav

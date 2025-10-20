@@ -1,7 +1,8 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
+"../../../../Lab1 Will Arthur.srcs/sources_1/new/alu.v" \
+"../../../../Lab1 Will Arthur.srcs/sim_1/new/alutestbench.v" \
 "../../../../Lab1 Will Arthur.srcs/sources_1/new/lab1.v" \
-"../../../../Lab1 Will Arthur.srcs/sim_1/new/registertestbench.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
