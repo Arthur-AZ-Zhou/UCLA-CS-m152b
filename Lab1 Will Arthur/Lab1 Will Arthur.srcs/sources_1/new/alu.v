@@ -475,7 +475,7 @@ module rshift_stage_2 (
     input arithmetic,
     output [15:0] out
 );
-    assign out = enable ? {arithmetic ? in[15] : 1'b0, 1'b0, in[15:2]} : in;
+    assign out = enable ? { {2{arithmetic ? in[15] : 1'b0}}, in[15:2]} : in;
 endmodule
 
 
@@ -485,7 +485,7 @@ module rshift_stage_4 (
     input arithmetic,
     output [15:0] out
 );
-    assign out = enable ? {arithmetic ? in[15] : 1'b0, 3'b0, in[15:4]} : in;
+    assign out = enable ? { {4{arithmetic ? in[15] : 1'b0}}, in[15:4]} : in;
 endmodule
 
 module rshift_stage_8 (
@@ -494,7 +494,7 @@ module rshift_stage_8 (
     input arithmetic,
     output [15:0] out
 );
-    assign out = enable ? {arithmetic ? in[15] : 1'b0, 7'b0, in[15:8]} : in;
+    assign out = enable ? { {8{arithmetic ? in[15] : 1'b0}}, in[15:8]} : in;
 endmodule
 
 
