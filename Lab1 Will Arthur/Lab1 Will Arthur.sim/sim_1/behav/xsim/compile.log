@@ -6,7 +6,7 @@ INFO: [VRFC 10-311] analyzing module m2_1
 INFO: [VRFC 10-311] analyzing module m4_1
 INFO: [VRFC 10-311] analyzing module m8_1
 INFO: [VRFC 10-311] analyzing module m16_1
-INFO: [VRFC 10-311] analyzing module mux12to1_16bit
+INFO: [VRFC 10-311] analyzing module mux16to1_16bit
 INFO: [VRFC 10-311] analyzing module custom_xor
 INFO: [VRFC 10-311] analyzing module adder
 INFO: [VRFC 10-311] analyzing module adder16

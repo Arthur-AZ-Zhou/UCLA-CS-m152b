@@ -41,10 +41,13 @@ module alutestbench();
         a = 16'sd1025;
         b = 16'sd125; 
         // a - b should be 900
+        #10;
         $display("Sub_out", dut.sub_out);
+        $display("Inv a", dut.sub_unit.a);
+        $display("Inv b", dut.sub_unit.b);
+        $display("Inv out", dut.sub_unit.out);
         $display("Add_out", dut.add_out);
         $display("or_out", dut.or_out);
-        #10;
         // check that zero is false
         
         a = 16'sd367;

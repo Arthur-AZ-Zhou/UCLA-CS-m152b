@@ -53,7 +53,7 @@ module alu(
     sle16 sle_unit (.a(a), .b(b), .out(sle_bit));
     wire [15:0] sle_out = {15'b0, sle_bit};
 
-    mux12to1_16bit result_mux (
+    mux16to1_16bit result_mux (
         .in0 (sub_out), // 0000
         .in1 (add_out), // 0001
         .in2 (or_out), // 0010
@@ -61,11 +61,15 @@ module alu(
         .in4 (dec_out), // 0100
         .in5 (inc_out), // 0101
         .in6 (inv_out), // 0110
-        .in7 (ashiftl_out), // 1100
-        .in8 (ashiftr_out), // 1110
-        .in9 (lshift_out), // 1000
-        .in10(rshift_out), // 1010
-        .in11(sle_out), // 1001
+        .in7 (16'b0),
+        .in8 (lshift_out), // 1000
+        .in9 (sle_out), // 1001
+        .in10 (rshift_out), // 1010
+        .in11 (16'b0),
+        .in12 (ashiftl_out), // 1100
+        .in13 (16'b0),
+        .in14 (ashiftr_out), // 1110
+        .in15 (16'b0),
         .sel(ctrl),
         .out(s)
     );
@@ -93,7 +97,28 @@ module alu(
     custom_xor f4(condr_2, a_sign, ashiftr_sign);
     and (ovf_ashiftr, condr_1, condr_2);
 
-    or(overflow, ovf_ashiftl, ovf_ashiftr, add_cout, sub_cout);
+    m16_1 overflow_mux ({sub_cout, add_cout, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 
+    1'b0, 1'b0, 1'b0, ovf_ashiftl, 1'b0, ovf_ashiftr, 1'b0}, ctrl, overflow);
+//        .in0 (sub_cout), // 0000
+//        .in1 (add_cout), // 0001
+//        .in2 (or_out), // 0010
+//        .in3 (and_out), // 0011
+//        .in4 (dec_out), // 0100
+//        .in5 (inc_out), // 0101
+//        .in6 (inv_out), // 0110
+//        .in7 (16'b0),
+//        .in8 (lshift_out), // 1000
+//        .in9 (sle_out), // 1001
+//        .in10 (rshift_out), // 1010
+//        .in11 (16'b0),
+//        .in12 (ashiftl_out), // 1100
+//        .in13 (16'b0),
+//        .in14 (ashiftr_out), // 1110
+//        .in15 (16'b0),
+//        .sel(ctrl),
+//        .out(s)
+//    );
+//    or(overflow, ovf_ashiftl, ovf_ashiftr, add_cout, sub_cout);
 
 endmodule
 
@@ -102,9 +127,9 @@ module custom_xnor(
     input a,
     input b
     );
-    wire noty;
-    custom_xor joe(a, b, y);
-    not (noty, y);
+    wire xor_a_b;
+    custom_xor joe(xor_a_b, a, b);
+    not (y, xor_a_b);
 endmodule
     
 module equal_4bit(
@@ -169,7 +194,7 @@ module m16_1(
 endmodule
 
 
-module mux12to1_16bit (
+module mux16to1_16bit (
     input  [15:0] in0,
     input  [15:0] in1,
     input  [15:0] in2,
@@ -182,6 +207,10 @@ module mux12to1_16bit (
     input  [15:0] in9,
     input  [15:0] in10,
     input  [15:0] in11,
+    input  [15:0] in12,
+    input  [15:0] in13,
+    input  [15:0] in14,
+    input  [15:0] in15,
     input  [3:0] sel,
     output [15:0] out
 );
@@ -190,7 +219,7 @@ module mux12to1_16bit (
         for (i = 0; i < 16; i = i + 1) begin : mux_bitwise
             wire [15:0] bit_slice;
             assign bit_slice = {
-                1'b0, 1'b0,1'b0, 1'b0,
+                in15[i], in14[i], in13[i], in12[i],
                 in11[i], in10[i], in9[i], in8[i],
                 in7[i], in6[i], in5[i], in4[i],
                 in3[i], in2[i], in1[i], in0[i]
@@ -268,7 +297,7 @@ module increment(
     output [15:0] out
     );
     wire co;
-    adder16 inc (.a(a), .b(1), .cin(0), .sum(out), .cout(co));
+    adder16 inc (.a(a), .b(16'b1), .cin(0), .sum(out), .cout(co));
 endmodule
 
 module decrement(
