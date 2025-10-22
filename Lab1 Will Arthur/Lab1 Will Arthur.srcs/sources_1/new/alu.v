@@ -83,13 +83,13 @@ module alu(
     
     wire cond1;
     wire cond2;
-    equal_4bit f1(cond1, ctrl, 4'b1100);
+    equal_4bit f1(.Y(cond1), .A(ctrl), .B(4'b1100));
     custom_xor f2(cond2, a_sign, ashiftl_sign);
-    and (of_ashiftl, cond1, cond2);
+    and (ovf_ashiftl, cond1, cond2);
     
     wire condr_1;
     wire condr_2;
-    equal_4bit f3(condr_1, ctrl, 4'b1110);
+    equal_4bit f3(.Y(condr_1), .A(ctrl), .B(4'b1110));
     custom_xor f4(condr_2, a_sign, ashiftr_sign);
     and (ovf_ashiftr, condr_1, condr_2);
 
@@ -98,18 +98,19 @@ module alu(
 endmodule
 
 module custom_xnor(
+    output y,
     input a,
-    input b,
-    output y
+    input b
     );
     wire noty;
-    xnor_elem custom_xnor(a, b, y);
+    custom_xor joe(a, b, y);
     not (noty, y);
+endmodule
     
 module equal_4bit(
-    input A[3:0],
-    input B[3:0],
-    output Y
+    output Y,
+    input [3:0] A,
+    input [3:0] B
     );
     wire equals[3:0];
     genvar i;
@@ -119,20 +120,6 @@ module equal_4bit(
         end
     endgenerate
     and final(Y, equals[0], equals[1], equals[2], equals[3]); 
-   
-   
-module m2_1(
-    input D0,
-    input D1,
-    input S,
-    output Y
-    );
-    wire T1, T2, Sbar;
-    and (T1, D1, S); // T1 = D1 && S
-    and (T2, D0, Sbar); // T2 = D0 && Sbar
-    not (Sbar, S); // Sbar = ~S
-    or (Y, T1, T2); // Y = T1 | T2
-    // Note that the sequence of instructions are not synchronous.
 endmodule
 
 module m2_1(
@@ -450,7 +437,7 @@ module rshift_stage_1 (
     input arithmetic,
     output [15:0] out
 );
-    assign out = enable ? {arithmetic ? in[15] : 1'b0, 0'b0, in[15:1]} : in;
+    assign out = enable ? {arithmetic ? in[15] : 1'b0, in[15:1]} : in;
 endmodule
 
 module rshift_stage_2 (
@@ -525,49 +512,3 @@ module rshiftby(
     assign out = stage4_out;
 
 endmodule
-
-
-
-//module a_rshift(
-//   input [15:0] a,
-//   output [15:0] out
-//   );
-   
-//   assign out[15] = a[15];
-   
-//   genvar i;
-//   generate
-//       for (i = 0; i < 15; i = i + 1) begin
-//           assign out[i] = a[i + 1];
-//       end
-//   endgenerate
-//endmodule
-
-//module l_rshift(
-//   input [15:0] a,
-//   output [15:0] out
-//   );
-   
-//   assign out[15] = 0;
-   
-//   genvar i;
-//   generate
-//       for (i = 0; i < 15; i = i + 1) begin
-//           assign out[i] = a[i + 1];
-//       end
-//   endgenerate
-//endmodule
-
-
-
-//module m31(
-//    input D0,
-//    input D1,
-//    input D2,
-//    input [1:0] S,
-//    output Y
-//    );
-    
-//    assign Y = S[0] ? D1 : (S[1] ? D2 : D0);
-    
-//endmodule
