@@ -93,7 +93,7 @@ module alu(
     custom_xor f4(condr_2, a_sign, ashiftr_sign);
     and (ovf_ashiftr, condr_1, condr_2);
 
-    and(overflow, ovf_ashiftl, ovf_ashiftr, add_cout, sub_cout);
+    or(overflow, ovf_ashiftl, ovf_ashiftr, add_cout, sub_cout);
 
 endmodule
 
@@ -190,7 +190,7 @@ module mux12to1_16bit (
         for (i = 0; i < 16; i = i + 1) begin : mux_bitwise
             wire [15:0] bit_slice;
             assign bit_slice = {
-                16'b0, 16'b0,16'b0, 16'b0,
+                1'b0, 1'b0,1'b0, 1'b0,
                 in11[i], in10[i], in9[i], in8[i],
                 in7[i], in6[i], in5[i], in4[i],
                 in3[i], in2[i], in1[i], in0[i]
