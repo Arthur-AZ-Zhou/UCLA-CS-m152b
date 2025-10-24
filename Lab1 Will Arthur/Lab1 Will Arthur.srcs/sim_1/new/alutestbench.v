@@ -178,7 +178,11 @@ module alutestbench();
         #10;
         $display("%0t\tINV\t%d\t\t-\t\t%d\t\t%b\t%b", $time, $signed(a), $signed(s), zero, overflow);
         
+        a = 16'h8000; // INT_MIN (-32768)
+        #10;
+        $display("%0t\tINV\t%d\t\t-\t\t%d\t\t%b\t%b (INT_MIN invert)", $time, $signed(a), $signed(s), zero, overflow);
         #100;
+        
         // ===== TEST LOGICAL LEFT SHIFT (1000) =====
         $display("\n----- LOGICAL LEFT SHIFT (ctrl=1000) -----");
         ctrl = 4'b1000;

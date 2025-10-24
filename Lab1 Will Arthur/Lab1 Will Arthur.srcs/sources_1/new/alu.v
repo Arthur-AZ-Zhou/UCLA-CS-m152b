@@ -76,7 +76,7 @@ module alu(
     // zero flag
     assign zero = (s == 16'b0) ? 1'b1 : 1'b0;
     
-    wire ovf_add, ovf_sub;
+    wire ovf_add, ovf_sub, ovf_inv;
     // Intermediate wires for ovf_add
     wire a15_xor_b15_add, s15_xor_a15_add;
     wire not_a15_xor_b15_add;
@@ -106,6 +106,7 @@ module alu(
     // ovf_sub = a[15] ^ b[15] & (sub_out[15] ^ a[15])
     and (ovf_sub, a15_xor_b15_sub, s15_xor_a15_sub);
 
+    equal_16bit(ovf_inv, a, 16'h8000);
 
 
     // overflow flag for arithmetic shifts when sign bit changed
@@ -129,7 +130,7 @@ module alu(
     custom_xor f4(condr_2, a_sign, ashiftr_sign);
     and (ovf_ashiftr, condr_1, condr_2);
 
-    m16_1 overflow_mux ({1'b0, ovf_ashiftr, 1'b0, ovf_ashiftl, 1'b0, 1'b0, 1'b0, 1'b0, 
+    m16_1 overflow_mux ({1'b0, ovf_ashiftr, 1'b0, ovf_ashiftl, 1'b0, 1'b0, ovf_inv, 1'b0, 
     1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, ovf_add, ovf_sub}, ctrl, overflow);
 //        .in0 (sub_cout), // 0000
 //        .in1 (add_cout), // 0001
@@ -177,6 +178,29 @@ module equal_4bit(
         end
     endgenerate
     and final(Y, equals[0], equals[1], equals[2], equals[3]); 
+endmodule
+
+module equal_16bit(
+    output Y,
+    input [15:0] A,
+    input [15:0] B
+    );
+    wire equals[15:0];
+    genvar i;
+    generate
+        for (i=0; i<16; i=i+1) begin
+            custom_xnor xnor_bit(equals[i], A[i], B[i]);
+        end
+    endgenerate
+    wire and_chain[15:0];
+    assign and_chain[0] = equals[0];
+    genvar j;
+    generate
+        for (j=1; j<16; j=j+1) begin
+            and (and_chain[j], and_chain[j-1], equals[j]);
+        end
+    endgenerate
+    assign Y = and_chain[15];
 endmodule
 
 module m2_1(
