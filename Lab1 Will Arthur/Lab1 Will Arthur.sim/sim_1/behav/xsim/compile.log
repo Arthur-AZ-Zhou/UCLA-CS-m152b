@@ -2,6 +2,7 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Student/Will Arthur Jimmy 
 INFO: [VRFC 10-311] analyzing module alu
 INFO: [VRFC 10-311] analyzing module custom_xnor
 INFO: [VRFC 10-311] analyzing module equal_4bit
+INFO: [VRFC 10-311] analyzing module equal_16bit
 INFO: [VRFC 10-311] analyzing module m2_1
 INFO: [VRFC 10-311] analyzing module m4_1
 INFO: [VRFC 10-311] analyzing module m8_1
