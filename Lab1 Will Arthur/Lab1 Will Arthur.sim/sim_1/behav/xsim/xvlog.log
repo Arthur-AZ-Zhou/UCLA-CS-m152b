@@ -1,0 +1,31 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-311] analyzing module custom_xnor
+INFO: [VRFC 10-311] analyzing module equal_4bit
+INFO: [VRFC 10-311] analyzing module m2_1
+INFO: [VRFC 10-311] analyzing module m4_1
+INFO: [VRFC 10-311] analyzing module m8_1
+INFO: [VRFC 10-311] analyzing module m16_1
+INFO: [VRFC 10-311] analyzing module mux16to1_16bit
+INFO: [VRFC 10-311] analyzing module custom_xor
+INFO: [VRFC 10-311] analyzing module adder
+INFO: [VRFC 10-311] analyzing module adder16
+INFO: [VRFC 10-311] analyzing module increment
+INFO: [VRFC 10-311] analyzing module decrement
+INFO: [VRFC 10-311] analyzing module invert16
+INFO: [VRFC 10-311] analyzing module subtract16
+INFO: [VRFC 10-311] analyzing module or16
+INFO: [VRFC 10-311] analyzing module and16
+INFO: [VRFC 10-311] analyzing module sle16
+INFO: [VRFC 10-311] analyzing module lshift_stage_1
+INFO: [VRFC 10-311] analyzing module lshift_stage_2
+INFO: [VRFC 10-311] analyzing module lshift_stage_4
+INFO: [VRFC 10-311] analyzing module lshift_stage_8
+INFO: [VRFC 10-311] analyzing module lshiftby
+INFO: [VRFC 10-311] analyzing module rshift_stage_1
+INFO: [VRFC 10-311] analyzing module rshift_stage_2
+INFO: [VRFC 10-311] analyzing module rshift_stage_4
+INFO: [VRFC 10-311] analyzing module rshift_stage_8
+INFO: [VRFC 10-311] analyzing module rshiftby
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sim_1/new/alutestbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alutestbench

@@ -130,7 +130,7 @@ module alu(
     and (ovf_ashiftr, condr_1, condr_2);
 
     m16_1 overflow_mux ({1'b0, ovf_ashiftr, 1'b0, ovf_ashiftl, 1'b0, 1'b0, 1'b0, 1'b0, 
-    1'b0, 1'b0, 1'b0, 1'b0, ovf_add, ovf_sub}, ctrl, overflow);
+    1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, ovf_add, ovf_sub}, ctrl, overflow);
 //        .in0 (sub_cout), // 0000
 //        .in1 (add_cout), // 0001
 //        .in2 (or_out), // 0010
