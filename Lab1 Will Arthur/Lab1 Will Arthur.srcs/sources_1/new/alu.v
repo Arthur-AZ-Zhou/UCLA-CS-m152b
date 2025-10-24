@@ -106,7 +106,7 @@ module alu(
     // ovf_sub = a[15] ^ b[15] & (sub_out[15] ^ a[15])
     and (ovf_sub, a15_xor_b15_sub, s15_xor_a15_sub);
 
-    equal_16bit(ovf_inv, a, 16'h8000);
+    equal_16bit eq(ovf_inv, a, 16'h8000);
 
 
     // overflow flag for arithmetic shifts when sign bit changed
@@ -185,21 +185,26 @@ module equal_16bit(
     input [15:0] A,
     input [15:0] B
     );
-    wire equals[15:0];
+    wire [15:0] equals;  
     genvar i;
     generate
         for (i=0; i<16; i=i+1) begin
             custom_xnor xnor_bit(equals[i], A[i], B[i]);
         end
     endgenerate
-    wire and_chain[15:0];
+    
+    wire [15:0] and_chain; 
+    
     assign and_chain[0] = equals[0];
+    
     genvar j;
+    // and chain implementation
     generate
         for (j=1; j<16; j=j+1) begin
             and (and_chain[j], and_chain[j-1], equals[j]);
         end
     endgenerate
+    
     assign Y = and_chain[15];
 endmodule
 
@@ -438,8 +443,13 @@ module sle16(
 
     subtract16 sub (.a(a), .b(b), .out(sum), .cout(garbage));
     
-    assign out = sum[15];
+    wire is_zero;
+    equal_16bit eq_check (.Y(is_zero), .A(sum), .B(16'b0));
     
+    wire is_negative;
+    assign is_negative = sum[15];
+    
+    or (out, is_negative, is_zero);
 endmodule
 
 module lshift_stage_1 (
