@@ -195,7 +195,8 @@ module equal_16bit(
     
     wire [15:0] and_chain; 
     
-    assign and_chain[0] = equals[0];
+    // Use buf gate
+    buf (and_chain[0], equals[0]);
     
     genvar j;
     // and chain implementation
@@ -205,7 +206,8 @@ module equal_16bit(
         end
     endgenerate
     
-    assign Y = and_chain[15];
+    // Use buf gate instead of assign
+    buf (Y, and_chain[15]);
 endmodule
 
 module m2_1(
