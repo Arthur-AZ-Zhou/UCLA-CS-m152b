@@ -75,6 +75,38 @@ module alu(
     );
     // zero flag
     assign zero = (s == 16'b0) ? 1'b1 : 1'b0;
+    
+    wire ovf_add, ovf_sub;
+    // Intermediate wires for ovf_add
+    wire a15_xor_b15_add, s15_xor_a15_add;
+    wire not_a15_xor_b15_add;
+    
+    // a[15] XOR b[15]
+    custom_xor xor1 (a15_xor_b15_add, a[15], b[15]);
+    
+    // NOT (a[15] XOR b[15])
+    not (not_a15_xor_b15_add, a15_xor_b15_add);
+    
+    // add_out[15] XOR a[15]
+    custom_xor xor2 (s15_xor_a15_add, add_out[15], a[15]);
+    
+    // ovf_add = ~a15^b15 & (add_out[15] ^ a[15])
+    and (ovf_add, not_a15_xor_b15_add, s15_xor_a15_add);
+    
+    
+    // Intermediate wires for ovf_sub
+    wire a15_xor_b15_sub, s15_xor_a15_sub;
+    
+    // a[15] XOR b[15]
+    custom_xor xor3 (a15_xor_b15_sub, a[15], b[15]);
+    
+    // sub_out[15] XOR a[15]
+    custom_xor xor4 (s15_xor_a15_sub, sub_out[15], a[15]);
+    
+    // ovf_sub = a[15] ^ b[15] & (sub_out[15] ^ a[15])
+    and (ovf_sub, a15_xor_b15_sub, s15_xor_a15_sub);
+
+
 
     // overflow flag for arithmetic shifts when sign bit changed
     wire a_sign = a[15];
@@ -97,8 +129,8 @@ module alu(
     custom_xor f4(condr_2, a_sign, ashiftr_sign);
     and (ovf_ashiftr, condr_1, condr_2);
 
-    m16_1 overflow_mux ({sub_cout, add_cout, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 
-    1'b0, 1'b0, 1'b0, ovf_ashiftl, 1'b0, ovf_ashiftr, 1'b0}, ctrl, overflow);
+    m16_1 overflow_mux ({1'b0, ovf_ashiftr, 1'b0, ovf_ashiftl, 1'b0, 1'b0, 1'b0, 1'b0, 
+    1'b0, 1'b0, 1'b0, 1'b0, ovf_add, ovf_sub}, ctrl, overflow);
 //        .in0 (sub_cout), // 0000
 //        .in1 (add_cout), // 0001
 //        .in2 (or_out), // 0010

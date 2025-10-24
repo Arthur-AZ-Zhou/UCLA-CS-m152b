@@ -65,7 +65,7 @@ module alutestbench();
         a = 16'h7FFF; b = 16'hFFFF; // 32767 - (-1)
         #10;
         $display("%0t\tSUB\t%d\t\t%d\t\t%d\t\t%b\t%b", $time, $signed(a), $signed(b), $signed(s), zero, overflow);
-        
+        $display(dut.sub_cout, dut.add_cout, dut.ovf_ashiftl, dut.ovf_ashiftr);
         #100;
         // ===== TEST ADDITION (0001) =====
         $display("\n----- ADDITION (ctrl=0001) -----");
