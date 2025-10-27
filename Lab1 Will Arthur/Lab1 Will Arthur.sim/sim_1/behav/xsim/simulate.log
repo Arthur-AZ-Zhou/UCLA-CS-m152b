@@ -1,0 +1,65 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+$finish called at time : 970 ns : File "C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sim_1/new/registertestbench.v" Line 195
+00	ADD	  500		  250		  750		0	0
+160000	ADD	    -1		    1		    0		1	0
+170000	ADD	 32767		    1		-32768		0	1
+180000	ADD	30000		20000		50000		0	1
+
+----- BITWISE OR (ctrl=0010) -----
+290000	OR	aaaa	5555	ffff	0	0
+300000	OR	f0f0	0f0f	ffff	0	0
+310000	OR	0000	0000	0000	1	0
+
+----- BITWISE AND (ctrl=0011) -----
+420000	AND	aaaa	5555	0000	1	0
+430000	AND	ffff	00ff	00ff	0	0
+440000	AND	f0f0	0f0f	0000	1	0
+
+----- DECREMENT (ctrl=0100) -----
+550000	DEC	  100		-		   99		0	0
+560000	DEC	    1		-		    0		1	0
+570000	DEC	    0		-		    -1		0	0
+
+----- INCREMENT (ctrl=0101) -----
+680000	INC	  100		-		  101		0	0
+690000	INC	    -1		-		    0		1	0
+700000	INC	    0		-		    1		0	0
+
+----- INVERT/NEGATE (ctrl=0110) -----
+810000	INV	   100		-		  -100		0	0
+820000	INV	    0		-		    0		1	0
+830000	INV	    -1		-		     1		0	0
+840000	INV	-32768		-		-32768		0	0 (INT_MIN invert)
+
+----- LOGICAL LEFT SHIFT (ctrl=1000) -----
+950000	LSL	0001	    1		0002	0	0
+960000	LSL	0001	    4		0010	0	0
+970000	LSL	00ff	    8		ff00	0	0
+980000	LSL	1234	    0		1234	0	0
+
+----- SET IF LESS OR EQUAL (ctrl=1001) -----
+1090000	SLE	     5		    10		    1		0	0 (a<=b: expect 1)
+1100000	SLE	    10		     5		    0		1	0 (a>b: expect 0)
+1110000	SLE	    10		    10		    1		0	0 (a==b: expect 1)
+1120000	SLE	    -1		     5		    1		0	0 (neg<=pos: expect 1)
+
+----- LOGICAL RIGHT SHIFT (ctrl=1010) -----
+1230000	LSR	8000	    1		4000	0	0
+1240000	LSR	ff00	    4		0ff0	0	0
+1250000	LSR	ff00	    8		00ff	0	0
+1260000	LSR	1234	    0		1234	0	0
+
+----- ARITHMETIC LEFT SHIFT (ctrl=1100) -----
+1370000	ASL	0001	    1		0002	0	0 (no ovf)
+1380000	ASL	4000	    1		8000	0	1 (expect ovf)
+1390000	ASL	0100	    4		1000	0	0
+
+----- ARITHMETIC RIGHT SHIFT (ctrl=1110) -----
+1500000	ASR	1000	    1		0800	0	0 (pos)
+1510000	ASR	f000	    1		f800	0	0 (neg, sign ext)
+1520000	ASR	f000	    4		ff00	0	0 (neg, sign ext)
+1530000	ASR	8000	    1		c000	0	0
+
+===== Test Complete =====
+$finish called at time : 1530 ns : File "C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sim_1/new/alutestbench.v" Line 295

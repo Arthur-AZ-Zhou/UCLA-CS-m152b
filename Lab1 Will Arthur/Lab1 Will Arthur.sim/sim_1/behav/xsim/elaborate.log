@@ -8,38 +8,4 @@ WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 1 for port cin [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v:400]
 WARNING: [VRFC 10-278] actual bit length 32 differs from formal bit length 16 for port b [C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sources_1/new/alu.v:369]
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.custom_xor
-Compiling module xil_defaultlib.adder
-Compiling module xil_defaultlib.adder16_default
-Compiling module xil_defaultlib.increment
-Compiling module xil_defaultlib.invert16
-Compiling module xil_defaultlib.subtract16
-Compiling module xil_defaultlib.or16
-Compiling module xil_defaultlib.and16
-Compiling module xil_defaultlib.decrement
-Compiling module xil_defaultlib.lshift_stage_1
-Compiling module xil_defaultlib.lshift_stage_2
-Compiling module xil_defaultlib.lshift_stage_4
-Compiling module xil_defaultlib.lshift_stage_8
-Compiling module xil_defaultlib.lshiftby
-Compiling module xil_defaultlib.rshift_stage_1
-Compiling module xil_defaultlib.rshift_stage_2
-Compiling module xil_defaultlib.rshift_stage_4
-Compiling module xil_defaultlib.rshift_stage_8
-Compiling module xil_defaultlib.rshiftby
-Compiling module xil_defaultlib.custom_xnor
-Compiling module xil_defaultlib.equal_16bit_default
-Compiling module xil_defaultlib.sle16
-Compiling module xil_defaultlib.m2_1
-Compiling module xil_defaultlib.m4_1
-Compiling module xil_defaultlib.m8_1
-Compiling module xil_defaultlib.m16_1
-Compiling module xil_defaultlib.mux16to1_16bit_default
-Compiling module xil_defaultlib.equal_4bit_default
-Compiling module xil_defaultlib.alu
-Compiling module xil_defaultlib.alutestbench
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot alutestbench_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
