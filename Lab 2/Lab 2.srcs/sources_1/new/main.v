@@ -91,7 +91,7 @@ module TrafficController(
     input wire traffic_sensor,
     output reg [2:0] main_light, // Main light with 3 states
     output reg [2:0] side_light,
-    output reg walk_light, // two states
+    output reg walk_light // two states
 );
     /*
     States:
@@ -116,9 +116,9 @@ module TrafficController(
                      SY = 4'd7;
 
     // Light (3 states -> 2 bits)
-    localparam GRN = 3'd0,
-               YEL = 3'd1,
-               RED = 3'd2;
+    localparam GRN = 3'b001,
+               YEL = 3'b010,
+               RED = 3'b100;
 
     reg [2:0] state, next_state;
     reg walk_req;
@@ -227,13 +227,13 @@ module TrafficController(
         
         case (state)
             MG1, MG2, MG3: begin
-                main_light = GREEN;
+                main_light = GRN;
                 side_light = RED;
                 walk_light = 0;
             end
             
             MY: begin
-                main_light = YELLOW;
+                main_light = YEL;
                 side_light = RED;
                 walk_light = 0;
             end
@@ -245,13 +245,13 @@ module TrafficController(
             
             SG1, SG2: begin
                 main_light = RED;
-                side_light = GREEN;
+                side_light = GRN;
                 walk_light = 0;
             end
             
             SY: begin
                 main_light = RED;
-                side_light = YELLOW;
+                side_light = YEL;
                 walk_light = 0;
             end
             
