@@ -135,6 +135,10 @@ module TrafficController(
 
     // State register (sequential logic)
     always @(posedge clk or posedge reset) begin
+        // Walk button register
+        if (walk_button) begin
+            walk_req <= 1;
+        end
         if (reset) begin
             state <= MG1; // reset leads to MSG
             timer <= 0;
@@ -148,11 +152,7 @@ module TrafficController(
             end else begin
                 timer <= timer + 1;
             end
-            
-            // Walk button register
-            if (walk_button) begin
-                walk_req <= 1;
-            end
+
             
             // Clear walk_req after walk cycle (-> back to SG1)
             if (state == WALK && next_state == SG1) begin
