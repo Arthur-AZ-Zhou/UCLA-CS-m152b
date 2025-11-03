@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1762197851">
+  <File Type="BITSTR-BMM" Name="TrafficController_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="TrafficController_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="TrafficController_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="TrafficController_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="TrafficController.tcl"/>
+  <File Type="OPT-TIMING" Name="TrafficController_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="TrafficController_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="TrafficController_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="TrafficController_reports.tcl"/>
+  <File Type="OPT-DRC" Name="TrafficController_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="TrafficController.hwdef"/>
+  <File Type="PWROPT-DCP" Name="TrafficController_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="TrafficController_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="TrafficController_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="TrafficController_placed.dcp"/>
+  <File Type="PLACE-IO" Name="TrafficController_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="TrafficController_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="TrafficController_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="TrafficController_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="TrafficController_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="TrafficController_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="TrafficController_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="TrafficController.bgn"/>
+  <File Type="PLACE-TIMING" Name="TrafficController_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="TrafficController_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="TrafficController.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="TrafficController_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="TrafficController_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="TrafficController_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="TrafficController.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="TrafficController_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="TrafficController_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="TrafficController_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="TrafficController_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="TrafficController_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="TrafficController_drc_routed.pb"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="TrafficController.ltx"/>
+  <File Type="ROUTE-DRC-RPX" Name="TrafficController_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="TrafficController.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="TrafficController_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="TrafficController_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-SYSDEF" Name="TrafficController.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="TrafficController_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="TrafficController_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="TrafficController_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="TrafficController_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="TrafficController_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="TrafficController_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="TrafficController_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="TrafficController_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="TrafficController_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="TrafficController_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="TrafficController_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="TrafficController_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="TrafficController_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="TrafficController_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="TrafficController_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="TrafficController_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="TrafficController_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="TrafficController_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="TrafficController_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="TrafficController.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="TrafficController_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="TrafficController.rbt"/>
+  <File Type="BITSTR-NKY" Name="TrafficController.nky"/>
+  <File Type="BG-DRC" Name="TrafficController.drc"/>
+  <File Type="RDI-RDI" Name="TrafficController.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/main.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="TrafficController"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../../Downloads/digilent-xdc-master/digilent-xdc-master/Basys-3-Master.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
