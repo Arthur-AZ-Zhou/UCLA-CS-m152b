@@ -124,7 +124,7 @@ module TrafficController(
     reg walk_req;
 
     reg [3:0] timer; // maximum count < 16 seconds (timer counts in seconds!)
-    wire one_sec_pulse;
+    wire pulse_1hz;
     
     // Clock divider instance
     ClockDivider #(.CLOCK_FREQ(100_000_000)) clk_div (
