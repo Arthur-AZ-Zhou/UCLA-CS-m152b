@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1762199000">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1762368515">
+  <File Type="OPT-HWDEF" Name="TrafficController.hwdef"/>
+  <File Type="ROUTE-BUS-SKEW" Name="TrafficController_bus_skew_routed.rpt"/>
+  <File Type="PA-DCP" Name="TrafficController.dcp"/>
   <File Type="BITSTR-BMM" Name="TrafficController_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="TrafficController_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="TrafficController_timing_summary_init.rpt"/>
@@ -10,7 +13,6 @@
   <File Type="ROUTE-PWR-SUM" Name="TrafficController_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="TrafficController_reports.tcl"/>
   <File Type="OPT-DRC" Name="TrafficController_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="TrafficController.hwdef"/>
   <File Type="PWROPT-DCP" Name="TrafficController_pwropt.dcp"/>
   <File Type="PWROPT-DRC" Name="TrafficController_drc_pwropted.rpt"/>
   <File Type="PWROPT-TIMING" Name="TrafficController_timing_summary_pwropted.rpt"/>
@@ -22,7 +24,6 @@
   <File Type="PLACE-CTRL" Name="TrafficController_control_sets_placed.rpt"/>
   <File Type="PLACE-SIMILARITY" Name="TrafficController_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="TrafficController_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BGN" Name="TrafficController.bgn"/>
   <File Type="PLACE-TIMING" Name="TrafficController_timing_summary_placed.rpt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="TrafficController_postplace_pwropt.dcp"/>
   <File Type="BG-BIN" Name="TrafficController.bin"/>
@@ -52,7 +53,6 @@
   <File Type="ROUTE-TIMING-RPX" Name="TrafficController_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="TrafficController_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="TrafficController_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="TrafficController_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="TrafficController_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="TrafficController_bus_skew_routed.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="TrafficController_postroute_physopt.dcp"/>
@@ -66,6 +66,7 @@
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="TrafficController_bus_skew_postroute_physopted.rpx"/>
   <File Type="BITSTR-RBT" Name="TrafficController.rbt"/>
   <File Type="BITSTR-NKY" Name="TrafficController.nky"/>
+  <File Type="BG-BGN" Name="TrafficController.bgn"/>
   <File Type="BG-DRC" Name="TrafficController.drc"/>
   <File Type="RDI-RDI" Name="TrafficController.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>

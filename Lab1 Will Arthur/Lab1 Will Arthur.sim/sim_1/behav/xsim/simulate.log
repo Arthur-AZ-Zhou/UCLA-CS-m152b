@@ -1,7 +1,16 @@
 Vivado Simulator 2018.2
 Time resolution is 1 ps
-$finish called at time : 970 ns : File "C:/Users/Student/Will Arthur Jimmy CS m152b/Lab1 Will Arthur/Lab1 Will Arthur.srcs/sim_1/new/registertestbench.v" Line 195
-00	ADD	  500		  250		  750		0	0
+Sub_out  900
+Inv a 1025
+Inv b  125
+Inv out  900
+Add_out 1150
+or_out 1149
+40000	SUB	 32767		    -1		-32768		0	1
+0100
+
+----- ADDITION (ctrl=0001) -----
+150000	ADD	  500		  250		  750		0	0
 160000	ADD	    -1		    1		    0		1	0
 170000	ADD	 32767		    1		-32768		0	1
 180000	ADD	30000		20000		50000		0	1

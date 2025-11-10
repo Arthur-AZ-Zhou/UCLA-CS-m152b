@@ -1,0 +1,117 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+
+=== TEST 1: Normal Cycle (No Sensors On) ===
+Expected: MG1(6s) -> MG2(6s) -> MY(2s) -> SG1(6s) -> SY(2s) -> MG1
+
+================================================================================
+Traffic Light Controller Testbench - ALL THREE REQUIRED TESTS
+================================================================================
+Time(ns) | Cycle | State | Main  | Side  | Walk | Sensor | Button | Timer
+---------|-------|-------|-------|-------|------|--------|--------|------
+      65 |     0 | MG1   | GREEN | RED   |  0   |   0    |   0    |    1
+      85 |     1 | MG1   | GREEN | RED   |  0   |   0    |   0    |    2
+     105 |     2 | MG1   | GREEN | RED   |  0   |   0    |   0    |    3
+     125 |     3 | MG1   | GREEN | RED   |  0   |   0    |   0    |    4
+     145 |     4 | MG1   | GREEN | RED   |  0   |   0    |   0    |    5
+     165 |     5 | MG2   | GREEN | RED   |  0   |   0    |   0    |    0
+     185 |     6 | MG2   | GREEN | RED   |  0   |   0    |   0    |    1
+     205 |     7 | MG2   | GREEN | RED   |  0   |   0    |   0    |    2
+     225 |     8 | MG2   | GREEN | RED   |  0   |   0    |   0    |    3
+     245 |     9 | MG2   | GREEN | RED   |  0   |   0    |   0    |    4
+     265 |    10 | MG2   | GREEN | RED   |  0   |   0    |   0    |    5
+     285 |    11 | MY    | YELLO | RED   |  0   |   0    |   0    |    0
+     305 |    12 | MY    | YELLO | RED   |  0   |   0    |   0    |    1
+     325 |    13 | SG1   | RED   | GREEN |  0   |   0    |   0    |    0
+     345 |    14 | SG1   | RED   | GREEN |  0   |   0    |   0    |    1
+     365 |    15 | SG1   | RED   | GREEN |  0   |   0    |   0    |    2
+     385 |    16 | SG1   | RED   | GREEN |  0   |   0    |   0    |    3
+     405 |    17 | SG1   | RED   | GREEN |  0   |   0    |   0    |    4
+     425 |    18 | SG1   | RED   | GREEN |  0   |   0    |   0    |    5
+     445 |    19 | SY    | RED   | YELLO |  0   |   0    |   0    |    0
+     465 |    20 | SY    | RED   | YELLO |  0   |   0    |   0    |    1
+
+=== TEST 2: Walk Button Pressed ===
+Expected: Should include WALK state (3s) between MY and SG1
+     525 |    21 | MG1   | GREEN | RED   |  0   |   0    |   0    |    0
+---------|-------|-------|-------|-------|------|--------|--------|------
+>>> END TEST 1 - Starting TEST 2 (Walk Button) <<<
+---------|-------|-------|-------|-------|------|--------|--------|------
+     545 |    22 | MG1   | GREEN | RED   |  0   |   0    |   0    |    1
+     565 |    23 | MG1   | GREEN | RED   |  0   |   0    |   0    |    2
+     585 |    24 | MG1   | GREEN | RED   |  0   |   0    |   1    |    3
+     605 |    25 | MG1   | GREEN | RED   |  0   |   0    |   1    |    4
+     625 |    26 | MG1   | GREEN | RED   |  0   |   0    |   0    |    5
+     645 |    27 | MG2   | GREEN | RED   |  0   |   0    |   0    |    0
+     665 |    28 | MG2   | GREEN | RED   |  0   |   0    |   0    |    1
+     685 |    29 | MG2   | GREEN | RED   |  0   |   0    |   0    |    2
+     705 |    30 | MG2   | GREEN | RED   |  0   |   0    |   0    |    3
+     725 |    31 | MG2   | GREEN | RED   |  0   |   0    |   0    |    4
+     745 |    32 | MG2   | GREEN | RED   |  0   |   0    |   0    |    5
+     765 |    33 | MY    | YELLO | RED   |  0   |   0    |   0    |    0
+     785 |    34 | MY    | YELLO | RED   |  0   |   0    |   0    |    1
+     805 |    35 | WALK  | RED   | RED   |  1   |   0    |   0    |    0
+     825 |    36 | WALK  | RED   | RED   |  1   |   0    |   0    |    1
+     845 |    37 | WALK  | RED   | RED   |  1   |   0    |   0    |    2
+     865 |    38 | SG1   | RED   | GREEN |  0   |   0    |   0    |    0
+     885 |    39 | SG1   | RED   | GREEN |  0   |   0    |   0    |    1
+     905 |    40 | SG1   | RED   | GREEN |  0   |   0    |   0    |    2
+     925 |    41 | SG1   | RED   | GREEN |  0   |   0    |   0    |    3
+     945 |    42 | SG1   | RED   | GREEN |  0   |   0    |   0    |    4
+     965 |    43 | SG1   | RED   | GREEN |  0   |   0    |   0    |    5
+     985 |    44 | SY    | RED   | YELLO |  0   |   0    |   0    |    0
+    1005 |    45 | SY    | RED   | YELLO |  0   |   0    |   0    |    1
+    1025 |    46 | MG1   | GREEN | RED   |  0   |   0    |   0    |    0
+---------|-------|-------|-------|-------|------|--------|--------|------
+>>> END TEST 2 - Starting TEST 3 (Traffic Sensor) <<<
+---------|-------|-------|-------|-------|------|--------|--------|------
+    1045 |    47 | MG1   | GREEN | RED   |  0   |   0    |   0    |    1
+    1065 |    48 | MG1   | GREEN | RED   |  0   |   0    |   0    |    2
+
+=== TEST 3: Traffic Sensor Active ===
+Expected: MG1(6s) -> MG3(3s) -> MY(2s) -> SG1(6s) -> SG2(3s) -> SY(2s)
+    1115 |    49 | MG1   | GREEN | RED   |  0   |   1    |   0    |    0
+    1135 |    50 | MG1   | GREEN | RED   |  0   |   1    |   0    |    1
+    1155 |    51 | MG1   | GREEN | RED   |  0   |   1    |   0    |    2
+    1175 |    52 | MG1   | GREEN | RED   |  0   |   1    |   0    |    3
+    1195 |    53 | MG1   | GREEN | RED   |  0   |   1    |   0    |    4
+    1215 |    54 | MG1   | GREEN | RED   |  0   |   1    |   0    |    5
+    1235 |    55 | MG3   | GREEN | RED   |  0   |   1    |   0    |    0
+    1255 |    56 | MG3   | GREEN | RED   |  0   |   1    |   0    |    1
+    1275 |    57 | MG3   | GREEN | RED   |  0   |   1    |   0    |    2
+    1295 |    58 | MY    | YELLO | RED   |  0   |   1    |   0    |    0
+    1315 |    59 | MY    | YELLO | RED   |  0   |   1    |   0    |    1
+    1335 |    60 | SG1   | RED   | GREEN |  0   |   1    |   0    |    0
+    1355 |    61 | SG1   | RED   | GREEN |  0   |   1    |   0    |    1
+    1375 |    62 | SG1   | RED   | GREEN |  0   |   1    |   0    |    2
+    1395 |    63 | SG1   | RED   | GREEN |  0   |   1    |   0    |    3
+    1415 |    64 | SG1   | RED   | GREEN |  0   |   1    |   0    |    4
+    1435 |    65 | SG1   | RED   | GREEN |  0   |   1    |   0    |    5
+    1455 |    66 | SG2   | RED   | GREEN |  0   |   1    |   0    |    0
+    1475 |    67 | SG2   | RED   | GREEN |  0   |   1    |   0    |    1
+    1495 |    68 | SG2   | RED   | GREEN |  0   |   1    |   0    |    2
+    1515 |    69 | SY    | RED   | YELLO |  0   |   1    |   0    |    0
+    1535 |    70 | SY    | RED   | YELLO |  0   |   1    |   0    |    1
+    1555 |    71 | MG1   | GREEN | RED   |  0   |   1    |   0    |    0
+    1575 |    72 | MG1   | GREEN | RED   |  0   |   1    |   0    |    1
+    1595 |    73 | MG1   | GREEN | RED   |  0   |   1    |   0    |    2
+    1615 |    74 | MG1   | GREEN | RED   |  0   |   1    |   0    |    3
+    1635 |    75 | MG1   | GREEN | RED   |  0   |   1    |   0    |    4
+    1655 |    76 | MG1   | GREEN | RED   |  0   |   1    |   0    |    5
+    1675 |    77 | MG3   | GREEN | RED   |  0   |   1    |   0    |    0
+    1695 |    78 | MG3   | GREEN | RED   |  0   |   1    |   0    |    1
+    1715 |    79 | MG3   | GREEN | RED   |  0   |   1    |   0    |    2
+    1735 |    80 | MY    | YELLO | RED   |  0   |   1    |   0    |    0
+    1755 |    81 | MY    | YELLO | RED   |  0   |   1    |   0    |    1
+    1775 |    82 | SG1   | RED   | GREEN |  0   |   1    |   0    |    0
+    1795 |    83 | SG1   | RED   | GREEN |  0   |   1    |   0    |    1
+    1815 |    84 | SG1   | RED   | GREEN |  0   |   1    |   0    |    2
+    1835 |    85 | SG1   | RED   | GREEN |  0   |   1    |   0    |    3
+    1855 |    86 | SG1   | RED   | GREEN |  0   |   1    |   0    |    4
+    1875 |    87 | SG1   | RED   | GREEN |  0   |   1    |   0    |    5
+    1895 |    88 | SG2   | RED   | GREEN |  0   |   1    |   0    |    0
+    1915 |    89 | SG2   | RED   | GREEN |  0   |   1    |   0    |    1
+    1935 |    90 | SG2   | RED   | GREEN |  0   |   1    |   0    |    2
+    1955 |    91 | SY    | RED   | YELLO |  0   |   1    |   0    |    0
+    1975 |    92 | SY    | RED   | YELLO |  0   |   1    |   0    |    1
+    1995 |    93 | MG1   | GREEN | RED   |  0   |   1    |   0    |    0
