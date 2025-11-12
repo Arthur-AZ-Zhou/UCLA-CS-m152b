@@ -28,7 +28,7 @@ module segment_display_test();
         .num(num),
         .seg(seg),
         .an(an)
-    )
+    );
     integer i;
     initial begin
         num = 0;
