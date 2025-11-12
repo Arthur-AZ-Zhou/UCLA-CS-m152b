@@ -20,10 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module segment_display_test(
-    input num,
-    output seg,
-    input clk,
-    output an
-    );
+module segment_display_test();
+    reg [3:0] num;
+    wire [6:0] seg;
+    wire [3:0] an;
+    SegmentDisplayDriver dut (
+        .num(num),
+        .seg(seg),
+        .an(an)
+    )
+    integer i;
+    initial begin
+        num = 0;
+        for (i = 0; i<10; i = i + 1) begin
+            #10
+            num = num + 1;
+        end
+    end
+
 endmodule
