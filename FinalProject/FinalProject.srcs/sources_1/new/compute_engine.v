@@ -20,8 +20,10 @@ module ComputeEngine(
 
     // --- State Machine Definitions ---
     localparam S_IDLE        = 0;
+    localparam S_L1_PRELOAD  = 5; // NEW: Wait for RAM
     localparam S_L1_COMPUTE  = 1; // Computing a batch of 64 neurons
     localparam S_L1_SAVE     = 2; // Saving results to Hidden RAM
+    localparam S_L2_PRELOAD  = 6; // NEW: Wait for RAM
     localparam S_L2_COMPUTE  = 3; // Computing Final Layer
     localparam S_DONE        = 4;
 
@@ -117,23 +119,24 @@ module ComputeEngine(
                 S_IDLE: begin
                     done <= 0;
                     if (start) begin
-                        state <= S_L1_COMPUTE;
-                        batch_counter <= 0;
-                        pixel_counter <= 0;
-                        cu_reset <= 1; // Clear accumulators
-                        cu_enable <= 0;
-                        
-                        // Setup addresses for first pixel
+                        // Prepare addresses for Batch 0
                         img_addr <= 0; 
-                        w1_addr <= 0; // Batch 0, Pixel 0
+                        w1_addr <= 0;
+                        batch_counter <= 0;
+                        
+                        state <= S_L1_PRELOAD; // Wait for RAM read
                     end
                 end
 
+                S_L1_PRELOAD: begin
+                    // Wait cycle for RAM to output data for address 0
+                    state <= S_L1_COMPUTE;
+                    pixel_counter <= 0;
+                    cu_reset <= 1; // Hold reset until Compute starts
+                    cu_enable <= 0;
+                end
+
                 S_L1_COMPUTE: begin
-                    // Pipeline delay:
-                    // Cycle 0: Addr ready
-                    // Cycle 1: RAM data ready -> DSP enable
-                    
                     cu_reset <= 0;
                     
                     // We run for 784 cycles (feed data) + 1 cycle (flush pipeline)
@@ -186,36 +189,35 @@ module ComputeEngine(
                         // Batch done.
                         if (batch_counter == 0) begin
                             batch_counter <= 1;
-                            state <= S_L1_COMPUTE;
-                            pixel_counter <= 0;
-                            cu_reset <= 1;
-                            
+                            // Setup addresses for Batch 1
                             img_addr <= 0;
-                            w1_addr <= 784; // Start of batch 1
-                        end else begin
-                            // Layer 1 Done!
-                            state <= S_L2_COMPUTE;
-                            pixel_counter <= 0;
-                            cu_reset <= 1;
+                            w1_addr <= 784; 
                             
-                            hidden_addr <= 0; // Start reading hidden RAM
+                            state <= S_L1_PRELOAD; // Wait for RAM
+                        end else begin
+                            // Layer 1 Done! Setup for L2
+                            hidden_addr <= 0;
                             w2_addr <= 0;
+                            
+                            state <= S_L2_PRELOAD; // Wait for RAM
                         end
                     end
                 end
 
+                S_L2_PRELOAD: begin
+                    state <= S_L2_COMPUTE;
+                    pixel_counter <= 0;
+                    cu_reset <= 1;
+                    cu_enable <= 0;
+                end
+
                 S_L2_COMPUTE: begin
-                    // Input: Hidden RAM data (128 values)
-                    // Weights: w2_data (10 values packed)
-                    // DSPs: Only 0-9 are used.
-                    
                     cu_reset <= 0;
                     
                     if (pixel_counter < 128) begin
                         cu_enable <= 1;
                         
                         // Input to all DSPs is the same hidden neuron activation
-                        // Zero extend the uint8 hidden data
                         cu_pixel_in <= {1'b0, hidden_rdata[7:0]};
                         
                         // Advance for next
