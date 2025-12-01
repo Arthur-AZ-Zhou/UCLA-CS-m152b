@@ -48,7 +48,17 @@ module main(
     
     // DEBUG: Show write address (lower 8 bits) to verify UART count
     // Final count 784 (0x310) -> LEDs should show 0x10 (00010000)
-    assign led[7:0] = write_addr[7:0];
+    // assign led[7:0] = write_addr[7:0];
+    
+    // DEBUG 2: Capture Pixel 406 (Center-ish: 14*28 + 14) from Compute Engine Read
+    reg [7:0] debug_val;
+    always @(posedge clk_25mhz) begin
+        if (reset) debug_val <= 0;
+        // When Compute Engine reads address 406 (center)
+        else if (ml_img_addr == 406) debug_val <= ml_img_data;
+    end
+    assign led[7:0] = debug_val;
+    
     // assign led[3:0] = prediction; // Override prediction for now with address debug
 
     // --- 1. UART Receiver ---
