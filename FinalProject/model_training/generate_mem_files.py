@@ -84,21 +84,6 @@ def generate_mem_files():
             f.write(hex_line + "\n")
             
     print(f"Written weights_l2_wide.mem to {OUTPUT_DIR}")
-    
-    # ---------------------------------------------------------
-    # 3. Dummy Biases
-    # ---------------------------------------------------------
-    # Layer 1 Biases: 128 lines of 32-bit zeros (8 hex chars)
-    with open(os.path.join(OUTPUT_DIR, "biases_l1.mem"), "w") as f:
-        for _ in range(128):
-            f.write("00000000\n")
-            
-    # Layer 2 Biases: 10 lines of 32-bit zeros
-    with open(os.path.join(OUTPUT_DIR, "biases_l2.mem"), "w") as f:
-        for _ in range(10):
-            f.write("00000000\n")
-            
-    print("Written dummy bias files.")
     print("Done!")
 
 if __name__ == "__main__":

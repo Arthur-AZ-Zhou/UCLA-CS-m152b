@@ -24,25 +24,6 @@ module WeightRamWideL1(
     end
 endmodule
 
-// Layer 1 Biases: 128 outputs
-// Data: 32-bit signed
-// Address: 7 bits (covers 128)
-module BiasRamL1(
-    input wire clk,
-    input wire [6:0] addr,
-    output reg [31:0] data
-);
-    reg [31:0] rom [0:127];
-
-    initial begin
-        $readmemh("biases_l1.mem", rom);
-    end
-
-    always @(posedge clk) begin
-        data <= rom[addr];
-    end
-endmodule
-
 // Layer 2 Weights: 128 inputs * 10 outputs = 1,280 bytes
 // For Layer 2, we only have 10 outputs.
 // We can just use 10 of our 64 DSPs.
@@ -59,23 +40,6 @@ module WeightRamWideL2(
 
     initial begin
         $readmemh("weights_l2_wide.mem", rom);
-    end
-
-    always @(posedge clk) begin
-        data <= rom[addr];
-    end
-endmodule
-
-// Layer 2 Biases: 10 outputs
-module BiasRamL2(
-    input wire clk,
-    input wire [3:0] addr,
-    output reg [31:0] data
-);
-    reg [31:0] rom [0:9];
-
-    initial begin
-        $readmemh("biases_l2.mem", rom);
     end
 
     always @(posedge clk) begin

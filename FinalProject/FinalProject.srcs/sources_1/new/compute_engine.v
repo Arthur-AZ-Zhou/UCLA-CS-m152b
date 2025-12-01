@@ -36,18 +36,9 @@ module ComputeEngine(
     reg [6:0] w2_addr;
     wire [79:0] w2_data;  // 10 bytes
     
-    reg [6:0] b1_addr;
-    wire [31:0] b1_data;
-    
-    reg [3:0] b2_addr;
-    wire [31:0] b2_data;
-
     // Instantiate ROMs
     WeightRamWideL1 rom_w1 (.clk(clk), .addr(w1_addr), .data(w1_data));
-    BiasRamL1       rom_b1 (.clk(clk), .addr(b1_addr), .data(b1_data));
-    
     WeightRamWideL2 rom_w2 (.clk(clk), .addr(w2_addr), .data(w2_data));
-    BiasRamL2       rom_b2 (.clk(clk), .addr(b2_addr), .data(b2_data));
 
     // --- Compute Units (64 instances) ---
     reg cu_reset;
@@ -163,10 +154,6 @@ module ComputeEngine(
                 end
 
                 S_L1_SAVE: begin
-                    // Read bias for the current neuron
-                    // current neuron index = (batch_counter * 64) + save_counter
-                    b1_addr <= (batch_counter * 64) + save_counter;
-                    
                     if (save_counter < 64) begin
                         reg signed [31:0] val;
                         val = cu_acc[save_counter]; 
