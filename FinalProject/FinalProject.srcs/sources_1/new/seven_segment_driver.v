@@ -4,27 +4,31 @@ module SegmentDisplayDriver(
     output wire [3:0] an // digit anodes
 );
     /*
-    Display segments:
-         a
+    Display segments mapping (XDC: seg[0]=A ... seg[6]=G)
+         a (seg[0])
         ---
-     f | g | b
-        ---
+     f |   | b
+        ---  <- g (seg[6])
      e |   | c
         ---
          d
+    
+    Active Low: 0 = ON, 1 = OFF
+    Order in constant: G F E D C B A (MSB=seg[6], LSB=seg[0])
     */
-    localparam LIGHT_ZERO = 7'b0000001;
-    localparam LIGHT_ONE = 7'b1001111;
-    localparam LIGHT_TWO = 7'b0010010;
-    localparam LIGHT_THREE = 7'b0000110;
-    localparam LIGHT_FOUR = 7'b1001100;
-    localparam LIGHT_FIVE = 7'b0100100;
-    localparam LIGHT_SIX = 7'b0100000;
-    localparam LIGHT_SEVEN = 7'b0001111;
-    localparam LIGHT_EIGHT = 7'b0000000;
-    localparam LIGHT_NINE = 7'b0000100;
+    
+    localparam LIGHT_ZERO  = 7'b1000000; // g=1(OFF), others=0(ON)
+    localparam LIGHT_ONE   = 7'b1111001; // b,c=0(ON)
+    localparam LIGHT_TWO   = 7'b0100100; // a,b,d,e,g=0
+    localparam LIGHT_THREE = 7'b0110000; // a,b,c,d,g=0
+    localparam LIGHT_FOUR  = 7'b0011001; // b,c,f,g=0
+    localparam LIGHT_FIVE  = 7'b0010010; // a,c,d,f,g=0
+    localparam LIGHT_SIX   = 7'b0000010; // a,c,d,e,f,g=0
+    localparam LIGHT_SEVEN = 7'b1111000; // a,b,c=0
+    localparam LIGHT_EIGHT = 7'b0000000; // all 0
+    localparam LIGHT_NINE  = 7'b0010000; // a,b,c,d,f,g=0 OR 0011000 for simple 9
 
-    assign an = 4'b1110;
+    assign an = 4'b1110; // Digit 0 ON
     reg [6:0] seg_reg;
     assign seg = seg_reg;
 
@@ -40,7 +44,7 @@ module SegmentDisplayDriver(
             4'd7: seg_reg = LIGHT_SEVEN;
             4'd8: seg_reg = LIGHT_EIGHT;
             4'd9: seg_reg = LIGHT_NINE;
-            default: seg_reg = 7'b1111111;
+            default: seg_reg = 7'b1111111; // All OFF
         endcase
     end
 
