@@ -44,8 +44,12 @@ module main(
     // LED 0-3: Prediction
     assign led[15] = img_loaded;
     assign led[14] = ml_done;
-    assign led[3:0] = prediction;
-    assign led[13:4] = 0;
+    assign led[13:8] = 0;
+    
+    // DEBUG: Show write address (lower 8 bits) to verify UART count
+    // Final count 784 (0x310) -> LEDs should show 0x10 (00010000)
+    assign led[7:0] = write_addr[7:0];
+    // assign led[3:0] = prediction; // Override prediction for now with address debug
 
     // --- 1. UART Receiver ---
     // Note: We need to update UartRx to expect 25MHz clock!
