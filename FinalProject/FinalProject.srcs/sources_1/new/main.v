@@ -1,80 +1,144 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/10/2025 10:33:46 AM
-// Design Name: 
-// Module Name: main
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-/*
-
-+--------------------------------------------------------------------------+
-| Top Level Module (on Basys 3)                                            |
-|                                                                          |
-|   +-----------------+        +------------------+        +-------------+ |
-|   |                 |        |                  |        |             | |
-|-->|  UART Receiver  |------->|  Input RAM       |------->|  ML Core    | |
-|   |  (from PC)      |        |  (28x28 Image)   |        |  (CNN/NN)   | |
-|   |                 |        |                  |        |             | |
-|   +-----------------+        +------------------+        +------|------+ |
-|          ^                            ^                         |        |
-|          |                            |                         |        |
-|   +------|----------------------------|-------------------------|------+ |
-|   |      v                            v                         v      | |
-|   |                          Control Unit (FSM)                        | |
-|   |                                 |                                  | |
-|   +---------------------------------|----------------------------------+ |
-|                                     |                                    |
-|                                     v                                    |
-|                               +-----------+                              |
-|                               |  Output   |---> (7-Segment Display, LEDs)|
-|                               |  Logic    |                              |
-|                               +-----------+                              |
-|                                                                          |
-+--------------------------------------------------------------------------+
-
-*/
 
 module main(
-
-    );
-endmodule
-
-module ClockDivider #(
-    parameter CLOCK_FREQ = 100_000_000
-)(
     input wire clk,
-    input wire reset,
-    output reg pulse_1hz
+    input wire reset, // Center Button
+    input wire RsRx,  // UART RX
+    output wire [15:0] led, // Debug LEDs
+    output wire [6:0] seg,  // 7-segment cathodes
+    output wire [3:0] an    // 7-segment anodes
 );
-    reg[31:0] counter;
-    localparam COUNT_MAX = CLOCK_FREQ - 1;
-    always @(posedge clk or posedge reset) begin
+
+    // --- Signals ---
+    wire [7:0] uart_data;
+    wire uart_valid;
+    
+    reg [9:0] write_addr;
+    reg img_loaded;
+    
+    // --- ML Core Signals ---
+    wire ml_start;
+    wire ml_done;
+    wire [3:0] prediction;
+    
+    // Image RAM Interface
+    wire [9:0] ml_img_addr;
+    wire [7:0] ml_img_data;
+    
+    // Hidden RAM Interface
+    wire [6:0] hid_addr_wr, hid_addr_rd;
+    wire hid_we;
+    wire [31:0] hid_wdata, hid_rdata;
+    wire [6:0] hid_addr_mux; // Muxed address for RAM
+
+    // Debug: Display received byte on LEDs
+    // LED 15: Image Loaded
+    // LED 14: ML Done
+    // LED 0-3: Prediction
+    assign led[15] = img_loaded;
+    assign led[14] = ml_done;
+    assign led[3:0] = prediction;
+    assign led[13:4] = 0;
+
+    // --- 1. UART Receiver ---
+    UartRx uart_inst (
+        .clk(clk),
+        .reset(reset),
+        .rx(RsRx),
+        .data(uart_data),
+        .valid(uart_valid)
+    );
+
+    // --- 2. Image RAM ---
+    ImageRam ram_inst (
+        .clk(clk),
+        // Write Port (UART)
+        .we_a(uart_valid),      
+        .addr_a(write_addr),
+        .data_in_a(uart_data),
+        // Read Port (ML Core)
+        .addr_b(ml_img_addr),
+        .data_out_b(ml_img_data)
+    );
+
+    // --- 3. Hidden RAM ---
+    // Mux logic inside ComputeEngine handles read vs write phases? 
+    // Actually ComputeEngine outputs separate read/write addresses, 
+    // but HiddenRam has separate Read/Write ports!
+    // Port A: Write (from L1 compute)
+    // Port B: Read (for L2 compute)
+    // BUT HiddenRam.v I wrote earlier is Simple Dual Port (Write Port, Read Port).
+    // Let's check HiddenRam ports: we, addr_wr, data_in, addr_rd, data_out. Perfect.
+    
+    HiddenRam hid_ram_inst (
+        .clk(clk),
+        .we(hid_we),
+        .addr_wr(hid_addr_wr),
+        .data_in(hid_wdata),
+        .addr_rd(hid_addr_rd), // Note: ComputeEngine needs to output this
+        .data_out(hid_rdata)
+    );
+    // Wait, ComputeEngine outputs `hidden_addr`. It uses ONE address pointer 
+    // because it never reads and writes at the same time.
+    // So we need to wire `hidden_addr` to BOTH addr_wr and addr_rd.
+    assign hid_addr_wr = hid_addr_mux;
+    assign hid_addr_rd = hid_addr_mux;
+
+    // --- 4. Compute Engine ---
+    ComputeEngine ml_core (
+        .clk(clk),
+        .reset(reset),
+        .start(ml_start),
+        .done(ml_done),
+        .predicted_digit(prediction),
+        
+        // Image RAM
+        .img_addr(ml_img_addr),
+        .img_data(ml_img_data),
+        
+        // Hidden RAM
+        .hidden_addr(hid_addr_mux),
+        .hidden_we(hid_we),
+        .hidden_wdata(hid_wdata),
+        .hidden_rdata(hid_rdata)
+    );
+
+    // --- 5. Display Driver ---
+    // Show "dONE" when done, or the digit?
+    // Let's just show the digit.
+    SegmentDisplayDriver seg_driver (
+        .num(prediction),
+        .seg(seg),
+        .an(an)
+    );
+
+    // --- 6. Control Logic ---
+    // Start ML when image is fully loaded
+    assign ml_start = img_loaded; 
+    // Note: This holds `start` high forever. ComputeEngine should handle this 
+    // (start on rising edge or level? My code used `if (start)` in IDLE, so level is fine 
+    // as long as it transitions out of IDLE).
+
+    always @(posedge clk) begin
         if (reset) begin
-            counter <= 0;
-            pulse_1hz <= 0;
+            write_addr <= 0;
+            img_loaded <= 0;
         end else begin
-            if (counter >= COUNT_MAX) begin
-                counter <= 0;
-                pulse_1hz <= 1;
+            if (uart_valid) begin
+                // If we haven't filled the memory yet
+                if (write_addr < 784) begin
+                    write_addr <= write_addr + 1;
+                    
+                    // Check if we just wrote the LAST byte (783)
+                    if (write_addr == 783) begin
+                        img_loaded <= 1;
+                    end
+                end 
             end
-            else begin
-                counter <= counter + 1;
-                pulse_1hz <= 0;
-            end
+            
+            // Auto-reset image loader if we want to load a NEW image?
+            // For now, require manual RESET button press to load new image.
         end
     end
+
 endmodule
