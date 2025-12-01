@@ -9,6 +9,13 @@ module main(
     output wire [3:0] an    // 7-segment anodes
 );
 
+    // --- Clock Divider (100MHz -> 25MHz) ---
+    reg [1:0] clk_div;
+    always @(posedge clk) begin
+        clk_div <= clk_div + 1;
+    end
+    wire clk_25mhz = clk_div[1]; // Divide by 4
+
     // --- Signals ---
     wire [7:0] uart_data;
     wire uart_valid;
@@ -41,8 +48,9 @@ module main(
     assign led[13:4] = 0;
 
     // --- 1. UART Receiver ---
+    // Note: We need to update UartRx to expect 25MHz clock!
     UartRx uart_inst (
-        .clk(clk),
+        .clk(clk_25mhz),
         .reset(reset),
         .rx(RsRx),
         .data(uart_data),
@@ -51,7 +59,7 @@ module main(
 
     // --- 2. Image RAM ---
     ImageRam ram_inst (
-        .clk(clk),
+        .clk(clk_25mhz),
         // Write Port (UART)
         .we_a(uart_valid),      
         .addr_a(write_addr),
@@ -71,7 +79,7 @@ module main(
     // Let's check HiddenRam ports: we, addr_wr, data_in, addr_rd, data_out. Perfect.
     
     HiddenRam hid_ram_inst (
-        .clk(clk),
+        .clk(clk_25mhz),
         .we(hid_we),
         .addr_wr(hid_addr_wr),
         .data_in(hid_wdata),
@@ -86,7 +94,7 @@ module main(
 
     // --- 4. Compute Engine ---
     ComputeEngine ml_core (
-        .clk(clk),
+        .clk(clk_25mhz),
         .reset(reset),
         .start(ml_start),
         .done(ml_done),
@@ -106,6 +114,7 @@ module main(
     // --- 5. Display Driver ---
     // Show "dONE" when done, or the digit?
     // Let's just show the digit.
+    // Note: Display driver is combinational (no clk), so it's fine.
     SegmentDisplayDriver seg_driver (
         .num(prediction),
         .seg(seg),
@@ -119,7 +128,7 @@ module main(
     // (start on rising edge or level? My code used `if (start)` in IDLE, so level is fine 
     // as long as it transitions out of IDLE).
 
-    always @(posedge clk) begin
+    always @(posedge clk_25mhz) begin
         if (reset) begin
             write_addr <= 0;
             img_loaded <= 0;

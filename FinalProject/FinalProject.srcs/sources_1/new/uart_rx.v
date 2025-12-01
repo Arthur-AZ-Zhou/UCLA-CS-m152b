@@ -6,9 +6,9 @@ module UartRx(
     output reg valid      // Flag: High for 1 cycle when data is valid
 );
 
-    // 100MHz / 9600 baud = 10416 clocks per bit
-    // We oversample by 16x -> 10416 / 16 = 651 clocks per "tick"
-    localparam OVERSAMPLE_TIMER_MAX = 651; 
+    // 25MHz / 9600 baud = 2604 clocks per bit
+    // We oversample by 16x -> 2604 / 16 = 162.75 -> 162
+    localparam OVERSAMPLE_TIMER_MAX = 162; 
     
     // States
     localparam IDLE  = 0;
