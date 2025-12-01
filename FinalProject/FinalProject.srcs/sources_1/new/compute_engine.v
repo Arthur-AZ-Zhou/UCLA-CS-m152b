@@ -142,7 +142,7 @@ module ComputeEngine(
                     
                     // Release reset so it is LOW in the first cycle of COMPUTE
                     cu_reset <= 0; 
-                    cu_enable <= 0;
+                    cu_enable <= 1; // Enable so P0 gets processed
                 end
 
                 S_L1_COMPUTE: begin
@@ -226,7 +226,7 @@ module ComputeEngine(
                     state <= S_L2_COMPUTE;
                     pixel_counter <= 0;
                     cu_reset <= 0; // Release reset
-                    cu_enable <= 0;
+                    cu_enable <= 1; // Enable so H0 gets processed
                 end
 
                 S_L2_COMPUTE: begin
