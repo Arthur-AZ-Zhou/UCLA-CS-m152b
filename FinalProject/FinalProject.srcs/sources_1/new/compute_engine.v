@@ -93,6 +93,13 @@ module ComputeEngine(
     localparam SHIFT_L1 = 11;
     localparam SHIFT_L2 = 8;
 
+    // --- Temporary Variables for Logic ---
+    reg signed [31:0] temp_val;
+    reg signed [31:0] max_val;
+    reg [3:0] best_digit;
+    reg signed [31:0] final_val;
+    integer k;
+
     // --- Main State Machine ---
     always @(posedge clk) begin
         if (reset) begin
@@ -155,21 +162,20 @@ module ComputeEngine(
 
                 S_L1_SAVE: begin
                     if (save_counter < 64) begin
-                        reg signed [31:0] val;
-                        val = cu_acc[save_counter]; 
+                        temp_val = cu_acc[save_counter]; 
                         
                         // ReLU
-                        if (val < 0) val = 0;
+                        if (temp_val < 0) temp_val = 0;
                         
                         // Shift
-                        val = val >>> SHIFT_L1;
+                        temp_val = temp_val >>> SHIFT_L1;
                         
                         // Clamp to uint8 (0-255)
-                        if (val > 255) val = 255;
+                        if (temp_val > 255) temp_val = 255;
                         
                         hidden_we <= 1;
                         hidden_addr <= (batch_counter * 64) + save_counter;
-                        hidden_wdata <= val;
+                        hidden_wdata <= temp_val;
                         
                         save_counter <= save_counter + 1;
                     end else begin
@@ -222,16 +228,11 @@ module ComputeEngine(
 
                 S_DONE: begin
                     // Find Max
-                    reg signed [31:0] max_val;
-                    reg [3:0] best_digit;
-                    integer k;
-                    
                     max_val = -2147483648; // Min int
                     best_digit = 0;
                     
                     for (k=0; k<10; k=k+1) begin
                          // Shift L2
-                         reg signed [31:0] final_val;
                          final_val = cu_acc[k] >>> SHIFT_L2;
                          
                          if (final_val > max_val) begin
