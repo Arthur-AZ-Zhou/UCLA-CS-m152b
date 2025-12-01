@@ -102,6 +102,8 @@ class DrawingHarness:
         l1_out = acc1 >> self.shift_l1
         l1_out = np.clip(l1_out, 0, 255).astype(np.int32)
         
+        print(f"DEBUG: Layer 1 Neuron 0 Value: {l1_out[0]}")
+        
         # Layer 2: Linear -> Shift
         acc2 = np.matmul(self.w2, l1_out)
         l2_out = acc2 >> self.shift_l2
