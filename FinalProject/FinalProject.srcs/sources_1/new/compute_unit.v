@@ -4,12 +4,12 @@ module ComputeUnit(
     input wire clk,
     input wire reset,
     input wire enable, // Only accumulate when enabled
-    input wire signed [7:0] pixel,
-    input wire signed [7:0] weight,
+    input wire signed [8:0] pixel,  // 9-bit SIGNED (0 to 255, bit 8 is always 0)
+    input wire signed [7:0] weight, // 8-bit SIGNED (-128 to 127)
     output reg signed [31:0] accumulator
 );
     
-    // DSP Slice inference usually happens automatically with this pattern
+    // DSP Slice inference: Signed * Signed
     always @(posedge clk) begin
         if (reset) begin
             accumulator <= 0;
@@ -19,4 +19,3 @@ module ComputeUnit(
     end
 
 endmodule
-

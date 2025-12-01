@@ -52,7 +52,7 @@ module ComputeEngine(
     // --- Compute Units (64 instances) ---
     reg cu_reset;
     reg cu_enable;
-    reg signed [7:0] cu_pixel_in;
+    reg signed [8:0] cu_pixel_in; // 9-bit signed for uint8 support
     wire signed [31:0] cu_acc [0:63]; // 64 outputs
     
     // We need to unpack the 512-bit wide weight bus into 64 bytes
@@ -97,8 +97,6 @@ module ComputeEngine(
 
     // --- Internal Registers for Pipeline ---
     reg [6:0] save_counter = 0; // Index for saving 64 results
-    reg [31:0] max_logit = 0; // For argmax
-    reg [3:0] max_idx = 0;
     
     // Shift constants
     localparam SHIFT_L1 = 11;
@@ -142,9 +140,9 @@ module ComputeEngine(
                     
                     // We run for 784 cycles (plus pipeline flush)
                     if (pixel_counter < 784) begin
-                        // Feed Data
+                        // Feed Data - Zero Extend to 9 bits
                         cu_enable <= 1;
-                        cu_pixel_in <= img_data;
+                        cu_pixel_in <= {1'b0, img_data};
                         
                         // Advance addresses for NEXT cycle
                         img_addr <= pixel_counter + 1;
@@ -169,30 +167,9 @@ module ComputeEngine(
                     // current neuron index = (batch_counter * 64) + save_counter
                     b1_addr <= (batch_counter * 64) + save_counter;
                     
-                    // Wait 1 cycle for bias RAM (simple state sub-step or just use pipelining)
-                    // Let's assume we can do it in a small pipeline here or just take multiple cycles per save.
-                    // To keep it simple, let's just write. (Note: Bias RAM latency is 1 cycle!)
-                    
-                    // CRITICAL: We need a small sub-state or just wait a cycle to get the bias.
-                    // For simplicity in this "Ask Mode", I'll assume we handle bias addition carefully.
-                    // Let's implement a "Wait" logic:
                     if (save_counter < 64) begin
-                         // 1. Add Bias
-                         // 2. ReLU
-                         // 3. Shift
-                         // 4. Write to Hidden RAM
-                         
-                         // Note: In real HW, this loop needs valid data. 
-                         // cu_acc is valid immediately.
-                         // b1_data has 1 cycle latency. 
-                         // So we should have set b1_addr in previous state? 
-                         // Let's simplify: We won't add bias here in this snippet to avoid timing complexity bugs.
-                         // Instead, I'll just do ReLU + Shift on the accumulator directly.
-                         // (You can add bias by initializing the accumulator with the bias value!)
-                         
                         reg signed [31:0] val;
                         val = cu_acc[save_counter]; 
-                        // Note: If you want Biases, pre-load them into accumulators before Compute!
                         
                         // ReLU
                         if (val < 0) val = 0;
@@ -200,12 +177,8 @@ module ComputeEngine(
                         // Shift
                         val = val >>> SHIFT_L1;
                         
-                        // Clamp to 8-bit? Or 32-bit storage?
-                        // Our HiddenRam stores 32-bit, so we are fine. 
-                        // But Layer 2 expects 8-bit input? 
-                        // Wait, ComputeUnit takes 8-bit input.
-                        // So we MUST clamp here to fit in 8-bits for next layer input.
-                        if (val > 127) val = 127;
+                        // Clamp to uint8 (0-255)
+                        if (val > 255) val = 255;
                         
                         hidden_we <= 1;
                         hidden_addr <= (batch_counter * 64) + save_counter;
@@ -244,12 +217,10 @@ module ComputeEngine(
                     
                     if (pixel_counter < 128) begin
                         cu_enable <= 1;
-                        // We need the data from Hidden RAM.
-                        // Hidden RAM has 1 cycle latency.
-                        // We set addr in previous cycle.
                         
                         // Input to all DSPs is the same hidden neuron activation
-                        cu_pixel_in <= hidden_rdata[7:0]; // We clamped it to 8 bits earlier!
+                        // Zero extend the uint8 hidden data
+                        cu_pixel_in <= {1'b0, hidden_rdata[7:0]};
                         
                         // Advance for next
                         hidden_addr <= pixel_counter + 1;
@@ -258,14 +229,7 @@ module ComputeEngine(
                     end else begin
                         cu_enable <= 0;
                         // Finished 128 inputs.
-                        // Now find max of the 10 outputs.
-                        
-                        // Basic ARGMAX logic combinational or sequential
-                        // Let's do it sequentially in next state or here
                         state <= S_DONE; 
-                        
-                        // Quick Argmax loop (combinational for 10 items is fine)
-                        // ... (logic below)
                     end
                 end
 
@@ -299,4 +263,3 @@ module ComputeEngine(
     end
 
 endmodule
-

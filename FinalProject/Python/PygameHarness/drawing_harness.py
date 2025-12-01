@@ -2,10 +2,18 @@ import pygame
 import numpy as np
 from PIL import Image
 import sys
+import serial
+import serial.tools.list_ports
+import time
 
 class DrawingHarness:
     def __init__(self):
         pygame.init()
+        
+        # UART Settings
+        self.ser = None
+        self.COM_PORT = 'COM3' # CHANGE THIS to your actual port (e.g. /dev/ttyUSB0)
+        self.BAUD_RATE = 9600
         
         # Canvas settings
         self.canvas_size = 112  # 4x of 28x28 for clean integer downscaling
@@ -45,10 +53,55 @@ class DrawingHarness:
         self.clear_button = pygame.Rect(self.display_size + 20, 50, 120, 40)
         self.process_button = pygame.Rect(self.display_size + 160, 50, 120, 40)
         self.save_button = pygame.Rect(self.display_size + 20, 110, 120, 40)
+        self.send_button = pygame.Rect(self.display_size + 20, 170, 120, 40) # New Send Button
         self.brush_up_button = pygame.Rect(self.display_size + 160, 110, 55, 40)
         self.brush_down_button = pygame.Rect(self.display_size + 225, 110, 55, 40)
         
         self.clock = pygame.time.Clock()
+
+    def init_uart(self):
+        """Try to initialize UART connection"""
+        try:
+            if self.ser and self.ser.is_open:
+                return True
+                
+            print(f"Attempting to connect to {self.COM_PORT}...")
+            self.ser = serial.Serial(self.COM_PORT, self.BAUD_RATE, timeout=1)
+            print(f"Successfully connected to {self.COM_PORT}")
+            return True
+        except Exception as e:
+            print(f"UART Error: {e}")
+            print("Available ports:")
+            ports = serial.tools.list_ports.comports()
+            for port in ports:
+                print(f"- {port.device}")
+            return False
+
+    def send_to_fpga(self):
+        """Send the downscaled image to FPGA via UART"""
+        # Ensure we have the latest downscaled image
+        self.downscale_image()
+        
+        if not self.init_uart():
+            return
+
+        try:
+            # Convert back to 0-255 range (uint8)
+            # The model expects 0-255. Our downscaled is 0-127.
+            data_to_send = (self.downscaled.astype(np.uint16) * 2).astype(np.uint8)
+            
+            # Flatten to 1D array (784 bytes)
+            flat_data = data_to_send.flatten()
+            
+            # Send bytes
+            bytes_written = self.ser.write(flat_data.tobytes())
+            print(f"Sent {bytes_written} bytes to FPGA.")
+            
+        except Exception as e:
+            print(f"Error sending data: {e}")
+            if self.ser:
+                self.ser.close()
+                self.ser = None
         
     def clear_canvas(self):
         """Clear the drawing canvas"""
@@ -187,6 +240,7 @@ class DrawingHarness:
         self.draw_button(self.clear_button, "Clear")
         self.draw_button(self.process_button, "Process")
         self.draw_button(self.save_button, "Save")
+        self.draw_button(self.send_button, "Send to FPGA", self.DARK_GRAY) # Draw Send Button
         self.draw_button(self.brush_up_button, "+", self.DARK_GRAY)
         self.draw_button(self.brush_down_button, "-", self.DARK_GRAY)
         
@@ -230,7 +284,8 @@ class DrawingHarness:
             "Left Click: Draw",
             "Right Click: Erase",
             "Process: Downscale to 28x28",
-            "Save: Export images"
+            "Save: Export images",
+            "Send: Transmit to FPGA"
         ]
         
         inst_y = self.display_size - 100
@@ -251,6 +306,8 @@ class DrawingHarness:
             self.downscale_image()
         elif self.save_button.collidepoint(pos):
             self.save_images()
+        elif self.send_button.collidepoint(pos): # Handle Send Click
+            self.send_to_fpga()
         elif self.brush_up_button.collidepoint(pos):
             self.brush_size = min(10, self.brush_size + 1)
             print(f"Brush size: {self.brush_size}")
