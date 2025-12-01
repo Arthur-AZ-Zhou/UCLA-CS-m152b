@@ -124,6 +124,7 @@ module ComputeEngine(
                         w1_addr <= 0;
                         batch_counter <= 0;
                         
+                        cu_reset <= 1; // Ensure reset is HIGH entering preload
                         state <= S_L1_PRELOAD; // Wait for RAM read
                     end
                 end
@@ -138,12 +139,14 @@ module ComputeEngine(
                     
                     state <= S_L1_COMPUTE;
                     pixel_counter <= 0;
-                    cu_reset <= 1; // Hold reset until Compute starts
+                    
+                    // Release reset so it is LOW in the first cycle of COMPUTE
+                    cu_reset <= 0; 
                     cu_enable <= 0;
                 end
 
                 S_L1_COMPUTE: begin
-                    cu_reset <= 0;
+                    // cu_reset is now 0.
                     
                     // We run for 784 cycles (feed data) + 1 cycle (flush pipeline)
                     if (pixel_counter < 784) begin
@@ -152,13 +155,7 @@ module ComputeEngine(
                         cu_pixel_in <= {1'b0, img_data};
                         
                         // Advance addresses for NEXT cycle
-                        img_addr <= pixel_counter + 1 + 1; // Preload did +1, so we are at 1. Next is 2.
-                        // Wait, pixel_counter starts at 0.
-                        // Preload set img_addr=1.
-                        // Cycle 0: img_addr <= 0 + 1 + 1 = 2.
-                        // img_data reads P1.
-                        // cu_pixel_in gets P1.
-                        // This aligns perfectly.
+                        img_addr <= pixel_counter + 1 + 1;
                         
                         // w1_addr layout: 
                         if (batch_counter == 0) w1_addr <= pixel_counter + 2;
@@ -166,7 +163,7 @@ module ComputeEngine(
                         
                         pixel_counter <= pixel_counter + 1;
                     end else if (pixel_counter == 784) begin
-                        // FLUSH CYCLE
+                        // FLUSH CYCLE: Allow the DSP to finish the last multiply-add
                         cu_enable <= 1;
                         cu_pixel_in <= 0; // Feed zero
                         pixel_counter <= pixel_counter + 1;
@@ -205,12 +202,14 @@ module ComputeEngine(
                             img_addr <= 0;
                             w1_addr <= 784; 
                             
+                            cu_reset <= 1; // Assert reset for next batch
                             state <= S_L1_PRELOAD; // Wait for RAM
                         end else begin
                             // Layer 1 Done! Setup for L2
                             hidden_addr <= 0;
                             w2_addr <= 0;
                             
+                            cu_reset <= 1; // Assert reset for next layer
                             state <= S_L2_PRELOAD; // Wait for RAM
                         end
                     end
@@ -226,13 +225,11 @@ module ComputeEngine(
                     
                     state <= S_L2_COMPUTE;
                     pixel_counter <= 0;
-                    cu_reset <= 1;
+                    cu_reset <= 0; // Release reset
                     cu_enable <= 0;
                 end
 
                 S_L2_COMPUTE: begin
-                    cu_reset <= 0;
-                    
                     if (pixel_counter < 128) begin
                         cu_enable <= 1;
                         
