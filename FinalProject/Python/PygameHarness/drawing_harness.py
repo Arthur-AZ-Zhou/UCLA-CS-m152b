@@ -5,10 +5,18 @@ import sys
 import serial
 import serial.tools.list_ports
 import time
+import os
 
 class DrawingHarness:
     def __init__(self):
         pygame.init()
+        
+        # Load Model for Verification
+        self.w1 = None
+        self.w2 = None
+        self.shift_l1 = 0
+        self.shift_l2 = 0
+        self.load_model()
         
         # UART Settings
         self.ser = None
@@ -59,6 +67,52 @@ class DrawingHarness:
         
         self.clock = pygame.time.Clock()
 
+    def load_model(self):
+        """Load the trained model for verification"""
+        try:
+            # Path relative to this script
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            model_path = os.path.join(script_dir, "../../model_training/mnist_model.npz")
+            
+            if not os.path.exists(model_path):
+                print(f"Warning: Model file not found at {model_path}")
+                return
+                
+            data = np.load(model_path)
+            self.w1 = data['w1'].astype(np.int32)
+            self.w2 = data['w2'].astype(np.int32)
+            self.shift_l1 = int(data['shift_l1'])
+            self.shift_l2 = int(data['shift_l2'])
+            print(f"Model loaded successfully from {model_path}")
+        except Exception as e:
+            print(f"Failed to load model: {e}")
+
+    def predict_python(self):
+        """Run inference in Python to verify model accuracy"""
+        if self.w1 is None:
+            return
+            
+        print("Running Python Inference...")
+        # Flatten input (784,)
+        img_vec = self.downscaled.flatten().astype(np.int32)
+        
+        # Layer 1: Linear -> ReLU -> Shift -> Clamp
+        acc1 = np.matmul(self.w1, img_vec)
+        acc1 = np.maximum(acc1, 0) # ReLU
+        l1_out = acc1 >> self.shift_l1
+        l1_out = np.clip(l1_out, 0, 255).astype(np.int32)
+        
+        # Layer 2: Linear -> Shift
+        acc2 = np.matmul(self.w2, l1_out)
+        l2_out = acc2 >> self.shift_l2
+        
+        # Argmax
+        prediction = np.argmax(l2_out)
+        print("=" * 30)
+        print(f"PYTHON PREDICTION: {prediction}")
+        print(f"Logits: {l2_out}")
+        print("=" * 30)
+
     def init_uart(self):
         """Try to initialize UART connection"""
         try:
@@ -81,6 +135,9 @@ class DrawingHarness:
         """Send the downscaled image to FPGA via UART"""
         # Ensure we have the latest downscaled image
         self.downscale_image()
+        
+        # Verify in Python first
+        self.predict_python()
         
         if not self.init_uart():
             return
