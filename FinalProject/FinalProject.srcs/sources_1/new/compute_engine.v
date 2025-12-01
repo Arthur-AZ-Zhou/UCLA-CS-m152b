@@ -129,7 +129,13 @@ module ComputeEngine(
                 end
 
                 S_L1_PRELOAD: begin
-                    // Wait cycle for RAM to output data for address 0
+                    // Latch P0 (which is valid now)
+                    cu_pixel_in <= {1'b0, img_data};
+                    
+                    // Advance pointers to 1 so Cycle 0 fetches P1
+                    img_addr <= img_addr + 1;
+                    w1_addr <= w1_addr + 1;
+                    
                     state <= S_L1_COMPUTE;
                     pixel_counter <= 0;
                     cu_reset <= 1; // Hold reset until Compute starts
@@ -146,15 +152,21 @@ module ComputeEngine(
                         cu_pixel_in <= {1'b0, img_data};
                         
                         // Advance addresses for NEXT cycle
-                        img_addr <= pixel_counter + 1;
+                        img_addr <= pixel_counter + 1 + 1; // Preload did +1, so we are at 1. Next is 2.
+                        // Wait, pixel_counter starts at 0.
+                        // Preload set img_addr=1.
+                        // Cycle 0: img_addr <= 0 + 1 + 1 = 2.
+                        // img_data reads P1.
+                        // cu_pixel_in gets P1.
+                        // This aligns perfectly.
                         
                         // w1_addr layout: 
-                        if (batch_counter == 0) w1_addr <= pixel_counter + 1;
-                        else w1_addr <= 784 + pixel_counter + 1;
+                        if (batch_counter == 0) w1_addr <= pixel_counter + 2;
+                        else w1_addr <= 784 + pixel_counter + 2;
                         
                         pixel_counter <= pixel_counter + 1;
                     end else if (pixel_counter == 784) begin
-                        // FLUSH CYCLE: Allow the DSP to finish the last multiply-add
+                        // FLUSH CYCLE
                         cu_enable <= 1;
                         cu_pixel_in <= 0; // Feed zero
                         pixel_counter <= pixel_counter + 1;
@@ -205,6 +217,13 @@ module ComputeEngine(
                 end
 
                 S_L2_PRELOAD: begin
+                    // Latch Input 0
+                    cu_pixel_in <= {1'b0, hidden_rdata[7:0]};
+                    
+                    // Advance pointers
+                    hidden_addr <= hidden_addr + 1;
+                    w2_addr <= w2_addr + 1;
+                    
                     state <= S_L2_COMPUTE;
                     pixel_counter <= 0;
                     cu_reset <= 1;
@@ -221,8 +240,8 @@ module ComputeEngine(
                         cu_pixel_in <= {1'b0, hidden_rdata[7:0]};
                         
                         // Advance for next
-                        hidden_addr <= pixel_counter + 1;
-                        w2_addr <= pixel_counter + 1;
+                        hidden_addr <= pixel_counter + 2; // Same +2 logic
+                        w2_addr <= pixel_counter + 2;
                         pixel_counter <= pixel_counter + 1;
                     end else if (pixel_counter == 128) begin
                         // FLUSH CYCLE
