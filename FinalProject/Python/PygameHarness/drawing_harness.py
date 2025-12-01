@@ -229,8 +229,7 @@ class DrawingHarness:
         # Draw buttons
         self.draw_button(self.clear_button, "Clear")
         self.draw_button(self.process_button, "Process")
-        self.draw_button(self.save_button, "Save")
-        self.draw_button(self.send_button, "Send to FPGA", self.DARK_GRAY) # Draw Send Button
+        self.draw_button(self.send_button, "Send to FPGA") # Draw Send Button
         self.draw_button(self.brush_up_button, "+", self.DARK_GRAY)
         self.draw_button(self.brush_down_button, "-", self.DARK_GRAY)
         
