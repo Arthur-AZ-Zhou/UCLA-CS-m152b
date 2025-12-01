@@ -136,7 +136,7 @@ module ComputeEngine(
                     
                     cu_reset <= 0;
                     
-                    // We run for 784 cycles (plus pipeline flush)
+                    // We run for 784 cycles (feed data) + 1 cycle (flush pipeline)
                     if (pixel_counter < 784) begin
                         // Feed Data - Zero Extend to 9 bits
                         cu_enable <= 1;
@@ -146,14 +146,17 @@ module ComputeEngine(
                         img_addr <= pixel_counter + 1;
                         
                         // w1_addr layout: 
-                        // Batch 0 (Neurons 0-63): Lines 0-783
-                        // Batch 1 (Neurons 64-127): Lines 784-1567
                         if (batch_counter == 0) w1_addr <= pixel_counter + 1;
                         else w1_addr <= 784 + pixel_counter + 1;
                         
                         pixel_counter <= pixel_counter + 1;
+                    end else if (pixel_counter == 784) begin
+                        // FLUSH CYCLE: Allow the DSP to finish the last multiply-add
+                        cu_enable <= 1;
+                        cu_pixel_in <= 0; // Feed zero
+                        pixel_counter <= pixel_counter + 1;
                     end else begin
-                        // Done with 784 pixels
+                        // Done
                         cu_enable <= 0; // Stop accumulating
                         state <= S_L1_SAVE;
                         save_counter <= 0;
@@ -218,6 +221,11 @@ module ComputeEngine(
                         // Advance for next
                         hidden_addr <= pixel_counter + 1;
                         w2_addr <= pixel_counter + 1;
+                        pixel_counter <= pixel_counter + 1;
+                    end else if (pixel_counter == 128) begin
+                        // FLUSH CYCLE
+                        cu_enable <= 1;
+                        cu_pixel_in <= 0;
                         pixel_counter <= pixel_counter + 1;
                     end else begin
                         cu_enable <= 0;
