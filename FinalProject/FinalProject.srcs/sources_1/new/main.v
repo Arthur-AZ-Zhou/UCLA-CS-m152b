@@ -50,12 +50,12 @@ module main(
     // Final count 784 (0x310) -> LEDs should show 0x10 (00010000)
     // assign led[7:0] = write_addr[7:0];
     
-    // DEBUG 2: Capture Pixel 406 (Center-ish: 14*28 + 14) from Compute Engine Read
+    // DEBUG 2: Capture Hidden Neuron 0 Value
     reg [7:0] debug_val;
     always @(posedge clk_25mhz) begin
         if (reset) debug_val <= 0;
-        // When Compute Engine reads address 406 (center)
-        else if (ml_img_addr == 406) debug_val <= ml_img_data;
+        // When Compute Engine writes to Hidden RAM address 0
+        else if (hid_we && hid_addr_mux == 0) debug_val <= hid_wdata[7:0];
     end
     assign led[7:0] = debug_val;
     
