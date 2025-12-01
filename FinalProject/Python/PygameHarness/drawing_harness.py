@@ -37,7 +37,7 @@ class DrawingHarness:
         self.canvas = np.zeros((self.canvas_size, self.canvas_size), dtype=np.uint8)
         
         # Downscaled image (28x28)
-        self.downscaled = np.zeros((28, 28), dtype=np.int8)
+        self.downscaled = np.zeros((28, 28), dtype=np.uint8)
         
         # Drawing settings
         self.brush_size = 5
@@ -52,8 +52,8 @@ class DrawingHarness:
         # Button rectangles
         self.clear_button = pygame.Rect(self.display_size + 20, 50, 120, 40)
         self.process_button = pygame.Rect(self.display_size + 160, 50, 120, 40)
-        self.save_button = pygame.Rect(self.display_size + 20, 110, 120, 40)
-        self.send_button = pygame.Rect(self.display_size + 20, 170, 120, 40) # New Send Button
+        # self.save_button removed
+        self.send_button = pygame.Rect(self.display_size + 20, 110, 120, 40) # Moved to row 2
         self.brush_up_button = pygame.Rect(self.display_size + 160, 110, 55, 40)
         self.brush_down_button = pygame.Rect(self.display_size + 225, 110, 55, 40)
         
@@ -86,12 +86,8 @@ class DrawingHarness:
             return
 
         try:
-            # Convert back to 0-255 range (uint8)
-            # The model expects 0-255. Our downscaled is 0-127.
-            data_to_send = (self.downscaled.astype(np.uint16) * 2).astype(np.uint8)
-            
-            # Flatten to 1D array (784 bytes)
-            flat_data = data_to_send.flatten()
+            # Flatten to 1D array (784 bytes) - already uint8 0-255
+            flat_data = self.downscaled.flatten()
             
             # Send bytes
             bytes_written = self.ser.write(flat_data.tobytes())
@@ -162,21 +158,17 @@ class DrawingHarness:
         self.last_pos = pos
     
     def downscale_image(self):
-        """Downscale the canvas to 28x28 int8 grayscale"""
+        """Downscale the canvas to 28x28 uint8 grayscale"""
         # Convert numpy array to PIL Image
         img = Image.fromarray(self.canvas, mode='L')
         
         # Resize to 28x28 using LANCZOS resampling for better quality
         img_resized = img.resize((28, 28), Image.Resampling.LANCZOS)
         
-        # Convert to numpy array (uint8 first to preserve 0-255 range)
-        img_array = np.array(img_resized, dtype=np.uint8)
+        # Convert to numpy array (uint8 0-255)
+        self.downscaled = np.array(img_resized, dtype=np.uint8)
         
-        # Scale from 0-255 to 0-127 to fit properly in int8 range
-        # This prevents negative wraparound values
-        self.downscaled = (img_array // 2).astype(np.int8)
-        
-        print("\n28x28 Downscaled Image (int8):")
+        print("\n28x28 Downscaled Image (uint8):")
         print(self.downscaled)
         print(f"\nShape: {self.downscaled.shape}")
         print(f"Data type: {self.downscaled.dtype}")
@@ -190,10 +182,8 @@ class DrawingHarness:
         canvas_img = Image.fromarray(self.canvas, mode='L')
         canvas_img.save('canvas_original.png')
         
-        # Save 28x28 downscaled (convert back to uint8 for saving)
-        # Scale from 0-127 back to 0-255 for proper visualization
-        downscaled_uint8 = (self.downscaled * 2).astype(np.uint8)
-        downscaled_img = Image.fromarray(downscaled_uint8, mode='L')
+        # Save 28x28 downscaled (already uint8 0-255)
+        downscaled_img = Image.fromarray(self.downscaled, mode='L')
         downscaled_img.save('downscaled_28x28.png')
         
         # Save numpy array as .npy file
@@ -258,9 +248,8 @@ class DrawingHarness:
             preview_scale = 8
             for y in range(28):
                 for x in range(28):
-                    # Scale from int8 (0-127) back to display range (0-255)
-                    value = int(self.downscaled[y, x]) * 2
-                    value = max(0, min(255, value))  # Clamp to valid range
+                    # Value is already 0-255
+                    value = int(self.downscaled[y, x])
                     color = (value, value, value)
                     rect = pygame.Rect(
                         self.display_size + 20 + x * preview_scale,
@@ -304,8 +293,7 @@ class DrawingHarness:
             print("Canvas cleared")
         elif self.process_button.collidepoint(pos):
             self.downscale_image()
-        elif self.save_button.collidepoint(pos):
-            self.save_images()
+        # Save button removed
         elif self.send_button.collidepoint(pos): # Handle Send Click
             self.send_to_fpga()
         elif self.brush_up_button.collidepoint(pos):
