@@ -1,0 +1,209 @@
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+---------------------------------------------------------------
+STARTING COMPUTE ENGINE TESTBENCH (VERBOSE DEBUG)
+---------------------------------------------------------------
+[100000] Loading Memory Files...
+Memory Loaded. L2[0] sample: d8030b07edfc0a0d12e8
+[130000] Loading Image RAM with 'Wide 1' Pattern...
+[7975000] Image Loaded.
+[8075000] Asserting START...
+[8076000] State Transition:  0 ->  1
+[8086000] State Transition:  1 ->  2
+[L1 STEP 0] PixelAddr:    0 | PixelVal:    0 | W1[0]:    5 | Acc[0]:           0
+[L1 STEP 1] PixelAddr:    1 | PixelVal:    0 | W1[0]:    5 | Acc[0]:           0
+[L1 STEP 2] PixelAddr:    2 | PixelVal:    0 | W1[0]:    5 | Acc[0]:           0
+[L1 STEP 3] PixelAddr:    3 | PixelVal:    0 | W1[0]:    5 | Acc[0]:           0
+[L1 STEP 4] PixelAddr:    4 | PixelVal:    0 | W1[0]:   -1 | Acc[0]:           0
+[L1 STEP 153] PixelAddr:  153 | PixelVal:    0 | W1[0]:  -17 | Acc[0]:           0
+[L1 STEP 154] PixelAddr:  154 | PixelVal:    0 | W1[0]:   -6 | Acc[0]:           0
+[L1 STEP 155] PixelAddr:  155 | PixelVal:  255 | W1[0]:   -8 | Acc[0]:           0
+[L1 STEP 156] PixelAddr:  156 | PixelVal:  255 | W1[0]:    6 | Acc[0]:       -2040
+[15936000] State Transition:  2 ->  3
+[L1 WRITE] Neuron  0 Saved Value:          62 (Hex: 0000003e)
+[L1 WRITE] Neuron  1 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron  2 Saved Value:          79 (Hex: 0000004f)
+[L1 WRITE] Neuron  3 Saved Value:          45 (Hex: 0000002d)
+[L1 WRITE] Neuron  4 Saved Value:          44 (Hex: 0000002c)
+[L1 WRITE] Neuron  5 Saved Value:          56 (Hex: 00000038)
+[L1 WRITE] Neuron  6 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron  7 Saved Value:          15 (Hex: 0000000f)
+[L1 WRITE] Neuron  8 Saved Value:          75 (Hex: 0000004b)
+[L1 WRITE] Neuron  9 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 10 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 11 Saved Value:           2 (Hex: 00000002)
+[L1 WRITE] Neuron 12 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 13 Saved Value:           2 (Hex: 00000002)
+[L1 WRITE] Neuron 14 Saved Value:           4 (Hex: 00000004)
+[L1 WRITE] Neuron 15 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 16 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 17 Saved Value:           3 (Hex: 00000003)
+[L1 WRITE] Neuron 18 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 19 Saved Value:          56 (Hex: 00000038)
+[L1 WRITE] Neuron 20 Saved Value:           5 (Hex: 00000005)
+[L1 WRITE] Neuron 21 Saved Value:          14 (Hex: 0000000e)
+[L1 WRITE] Neuron 22 Saved Value:          10 (Hex: 0000000a)
+[L1 WRITE] Neuron 23 Saved Value:          40 (Hex: 00000028)
+[L1 WRITE] Neuron 24 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 25 Saved Value:          40 (Hex: 00000028)
+[L1 WRITE] Neuron 26 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 27 Saved Value:          37 (Hex: 00000025)
+[L1 WRITE] Neuron 28 Saved Value:          21 (Hex: 00000015)
+[L1 WRITE] Neuron 29 Saved Value:          81 (Hex: 00000051)
+[L1 WRITE] Neuron 30 Saved Value:           4 (Hex: 00000004)
+[L1 WRITE] Neuron 31 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 32 Saved Value:           6 (Hex: 00000006)
+[L1 WRITE] Neuron 33 Saved Value:          43 (Hex: 0000002b)
+[L1 WRITE] Neuron 34 Saved Value:           8 (Hex: 00000008)
+[L1 WRITE] Neuron 35 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 36 Saved Value:          69 (Hex: 00000045)
+[L1 WRITE] Neuron 37 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 38 Saved Value:          15 (Hex: 0000000f)
+[L1 WRITE] Neuron 39 Saved Value:          42 (Hex: 0000002a)
+[L1 WRITE] Neuron 40 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 41 Saved Value:          46 (Hex: 0000002e)
+[L1 WRITE] Neuron 42 Saved Value:          50 (Hex: 00000032)
+[L1 WRITE] Neuron 43 Saved Value:          19 (Hex: 00000013)
+[L1 WRITE] Neuron 44 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 45 Saved Value:           5 (Hex: 00000005)
+[L1 WRITE] Neuron 46 Saved Value:          27 (Hex: 0000001b)
+[L1 WRITE] Neuron 47 Saved Value:           2 (Hex: 00000002)
+[L1 WRITE] Neuron 48 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 49 Saved Value:          22 (Hex: 00000016)
+[L1 WRITE] Neuron 50 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 51 Saved Value:          22 (Hex: 00000016)
+[L1 WRITE] Neuron 52 Saved Value:          30 (Hex: 0000001e)
+[L1 WRITE] Neuron 53 Saved Value:          24 (Hex: 00000018)
+[L1 WRITE] Neuron 54 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 55 Saved Value:           7 (Hex: 00000007)
+[L1 WRITE] Neuron 56 Saved Value:           1 (Hex: 00000001)
+[L1 WRITE] Neuron 57 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 58 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 59 Saved Value:          56 (Hex: 00000038)
+[L1 WRITE] Neuron 60 Saved Value:          48 (Hex: 00000030)
+[L1 WRITE] Neuron 61 Saved Value:          21 (Hex: 00000015)
+[L1 WRITE] Neuron 62 Saved Value:          10 (Hex: 0000000a)
+[L1 WRITE] Neuron 63 Saved Value:           0 (Hex: 00000000)
+[16586000] State Transition:  3 ->  1
+[16596000] State Transition:  1 ->  2
+[L1 STEP 0] PixelAddr:    0 | PixelVal:    0 | W1[0]:    2 | Acc[0]:           0
+[L1 STEP 1] PixelAddr:    1 | PixelVal:    0 | W1[0]:    2 | Acc[0]:           0
+[L1 STEP 2] PixelAddr:    2 | PixelVal:    0 | W1[0]:    2 | Acc[0]:           0
+[L1 STEP 3] PixelAddr:    3 | PixelVal:    0 | W1[0]:   -6 | Acc[0]:           0
+[L1 STEP 4] PixelAddr:    4 | PixelVal:    0 | W1[0]:    1 | Acc[0]:           0
+[L1 STEP 153] PixelAddr:  153 | PixelVal:    0 | W1[0]:   11 | Acc[0]:           0
+[L1 STEP 154] PixelAddr:  154 | PixelVal:    0 | W1[0]:    5 | Acc[0]:           0
+[L1 STEP 155] PixelAddr:  155 | PixelVal:  255 | W1[0]:   -8 | Acc[0]:           0
+[L1 STEP 156] PixelAddr:  156 | PixelVal:  255 | W1[0]:    0 | Acc[0]:       -2040
+[24446000] State Transition:  2 ->  3
+[L1 WRITE] Neuron 64 Saved Value:          17 (Hex: 00000011)
+[L1 WRITE] Neuron 65 Saved Value:          14 (Hex: 0000000e)
+[L1 WRITE] Neuron 66 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 67 Saved Value:           5 (Hex: 00000005)
+[L1 WRITE] Neuron 68 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 69 Saved Value:           3 (Hex: 00000003)
+[L1 WRITE] Neuron 70 Saved Value:           4 (Hex: 00000004)
+[L1 WRITE] Neuron 71 Saved Value:          49 (Hex: 00000031)
+[L1 WRITE] Neuron 72 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 73 Saved Value:          49 (Hex: 00000031)
+[L1 WRITE] Neuron 74 Saved Value:          73 (Hex: 00000049)
+[L1 WRITE] Neuron 75 Saved Value:           1 (Hex: 00000001)
+[L1 WRITE] Neuron 76 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 77 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 78 Saved Value:          25 (Hex: 00000019)
+[L1 WRITE] Neuron 79 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 80 Saved Value:          29 (Hex: 0000001d)
+[L1 WRITE] Neuron 81 Saved Value:          52 (Hex: 00000034)
+[L1 WRITE] Neuron 82 Saved Value:          18 (Hex: 00000012)
+[L1 WRITE] Neuron 83 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 84 Saved Value:          14 (Hex: 0000000e)
+[L1 WRITE] Neuron 85 Saved Value:          10 (Hex: 0000000a)
+[L1 WRITE] Neuron 86 Saved Value:          37 (Hex: 00000025)
+[L1 WRITE] Neuron 87 Saved Value:          55 (Hex: 00000037)
+[L1 WRITE] Neuron 88 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 89 Saved Value:          46 (Hex: 0000002e)
+[L1 WRITE] Neuron 90 Saved Value:          44 (Hex: 0000002c)
+[L1 WRITE] Neuron 91 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 92 Saved Value:          49 (Hex: 00000031)
+[L1 WRITE] Neuron 93 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 94 Saved Value:          38 (Hex: 00000026)
+[L1 WRITE] Neuron 95 Saved Value:          62 (Hex: 0000003e)
+[L1 WRITE] Neuron 96 Saved Value:           9 (Hex: 00000009)
+[L1 WRITE] Neuron 97 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 98 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 99 Saved Value:           7 (Hex: 00000007)
+[L1 WRITE] Neuron 100 Saved Value:          31 (Hex: 0000001f)
+[L1 WRITE] Neuron 101 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 102 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 103 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 104 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 105 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 106 Saved Value:           3 (Hex: 00000003)
+[L1 WRITE] Neuron 107 Saved Value:          62 (Hex: 0000003e)
+[L1 WRITE] Neuron 108 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 109 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 110 Saved Value:           3 (Hex: 00000003)
+[L1 WRITE] Neuron 111 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 112 Saved Value:          79 (Hex: 0000004f)
+[L1 WRITE] Neuron 113 Saved Value:          52 (Hex: 00000034)
+[L1 WRITE] Neuron 114 Saved Value:          27 (Hex: 0000001b)
+[L1 WRITE] Neuron 115 Saved Value:           9 (Hex: 00000009)
+[L1 WRITE] Neuron 116 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 117 Saved Value:          91 (Hex: 0000005b)
+[L1 WRITE] Neuron 118 Saved Value:          18 (Hex: 00000012)
+[L1 WRITE] Neuron 119 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 120 Saved Value:          12 (Hex: 0000000c)
+[L1 WRITE] Neuron 121 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 122 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 123 Saved Value:          19 (Hex: 00000013)
+[L1 WRITE] Neuron 124 Saved Value:          10 (Hex: 0000000a)
+[L1 WRITE] Neuron 125 Saved Value:          36 (Hex: 00000024)
+[L1 WRITE] Neuron 126 Saved Value:           0 (Hex: 00000000)
+[L1 WRITE] Neuron 127 Saved Value:           0 (Hex: 00000000)
+[25096000] State Transition:  3 ->  4
+[25106000] State Transition:  4 ->  8
+[25116000] State Transition:  8 ->  5
+[25116000] State:  5 | Iter:    0
+    -> L2 Addr (w2_addr):   0
+    -> L2 ROM Data (w2_data_wide): d8030b07edfc0a0d12e8
+    -> DSP Weight In [0]: e8
+    -> DSP Pixel In: 000
+------------------------------------------------
+[L2 STEP 0] HiddenVal:    0 | W2[0]:  -24 | Acc[0]:           0 || W2[2]:   13 | Acc[2]:           0
+[25126000] State:  5 | Iter:    1
+    -> L2 Addr (w2_addr):   0
+    -> L2 ROM Data (w2_data_wide): d8030b07edfc0a0d12e8
+    -> DSP Weight In [0]: e8
+    -> DSP Pixel In: 03e
+------------------------------------------------
+[L2 STEP 1] HiddenVal:   62 | W2[0]:  -24 | Acc[0]:           0 || W2[2]:   13 | Acc[2]:           0
+[25136000] State:  5 | Iter:    2
+    -> L2 Addr (w2_addr):   1
+    -> L2 ROM Data (w2_data_wide): d8030b07edfc0a0d12e8
+    -> DSP Weight In [0]: e8
+    -> DSP Pixel In: 03e
+------------------------------------------------
+[L2 STEP 2] HiddenVal:   62 | W2[0]:  -24 | Acc[0]:       -1488 || W2[2]:   13 | Acc[2]:         806
+[25146000] State:  5 | Iter:    3
+    -> L2 Addr (w2_addr):   2
+    -> L2 ROM Data (w2_data_wide): d90ef70e070ed60e1107
+    -> DSP Weight In [0]: 07
+    -> DSP Pixel In: 000
+------------------------------------------------
+[L2 STEP 3] HiddenVal:    0 | W2[0]:    7 | Acc[0]:       -2976 || W2[2]:   14 | Acc[2]:        1612
+[25156000] State:  5 | Iter:    4
+    -> L2 Addr (w2_addr):   3
+    -> L2 ROM Data (w2_data_wide): d0e62115e0080bed3601
+    -> DSP Weight In [0]: 01
+    -> DSP Pixel In: 04f
+------------------------------------------------
+[L2 STEP 4] HiddenVal:   79 | W2[0]:    1 | Acc[0]:       -2976 || W2[2]:  -19 | Acc[2]:        1612
+[26406000] State Transition:  5 ->  6
+DEBUG: Digit 0 | Raw Acc:      -24512 | Shifted:         -12
+DEBUG: Digit 1 | Raw Acc:       19857 | Shifted:           9
+DEBUG: Digit 2 | Raw Acc:       -9496 | Shifted:          -5
+DEBUG: Digit 3 | Raw Acc:       -2537 | Shifted:          -2
+DEBUG: Digit 4 | Raw Acc:      -13671 | Shifted:          -7
+DEBUG: Digit 5 | Raw Acc:      -16564 | Shifted:          -9
+DEBUG: Digit 6 | Raw Acc:      -10602 | Shifted:          -6
+DEBUG: Digi

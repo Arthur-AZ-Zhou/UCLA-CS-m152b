@@ -1,13 +1,21 @@
 Vivado Simulator 2018.2
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 6c8a4c6f4ffa4090b65cf72d26a8b3fb --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot segment_display_test_behav xil_defaultlib.segment_display_test xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 6c8a4c6f4ffa4090b65cf72d26a8b3fb --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_ComputeEngine_behav xil_defaultlib.tb_ComputeEngine xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/bram.v" Line 1. Module ImageRam doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.SegmentDisplayDriver
-Compiling module xil_defaultlib.segment_display_test
+Compiling module xil_defaultlib.WeightRamWideL1
+Compiling module xil_defaultlib.WeightRamWideL2
+Compiling module xil_defaultlib.ShiftRam
+Compiling module unisims_ver.DSP48E1(ACASCREG=0,ALUMODEREG=0,...
+Compiling module xil_defaultlib.ComputeUnit
+Compiling module xil_defaultlib.ComputeEngine_default
+Compiling module xil_defaultlib.ImageRam
+Compiling module xil_defaultlib.HiddenRam
+Compiling module xil_defaultlib.tb_ComputeEngine
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot segment_display_test_behav
+Built simulation snapshot tb_ComputeEngine_behav

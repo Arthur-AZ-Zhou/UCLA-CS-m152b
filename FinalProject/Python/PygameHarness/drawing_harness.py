@@ -12,12 +12,12 @@ class DrawingHarness:
         
         # UART Settings
         self.ser = None
-        self.COM_PORT = 'COM3' # CHANGE THIS to your actual port (e.g. /dev/ttyUSB0)
-        self.BAUD_RATE = 9600
+        self.COM_PORT = 'COM42' # CHANGE THIS to your actual port
+        self.BAUD_RATE = 115200
         
         # Canvas settings
         self.canvas_size = 112  # 4x of 28x28 for clean integer downscaling
-        self.scale_factor = 5  # Display scale for easier drawing
+        self.scale_factor = 5   # Display scale for easier drawing
         self.display_size = self.canvas_size * self.scale_factor
         
         # Window settings
@@ -37,7 +37,8 @@ class DrawingHarness:
         self.canvas = np.zeros((self.canvas_size, self.canvas_size), dtype=np.uint8)
         
         # Downscaled image (28x28)
-        self.downscaled = np.zeros((28, 28), dtype=np.int8)
+        # CHANGED: Use uint8 (0-255) instead of int8 (0-127)
+        self.downscaled = np.zeros((28, 28), dtype=np.uint8)
         
         # Drawing settings
         self.brush_size = 5
@@ -53,7 +54,7 @@ class DrawingHarness:
         self.clear_button = pygame.Rect(self.display_size + 20, 50, 120, 40)
         self.process_button = pygame.Rect(self.display_size + 160, 50, 120, 40)
         self.save_button = pygame.Rect(self.display_size + 20, 110, 120, 40)
-        self.send_button = pygame.Rect(self.display_size + 20, 170, 120, 40) # New Send Button
+        self.send_button = pygame.Rect(self.display_size + 20, 170, 120, 40)
         self.brush_up_button = pygame.Rect(self.display_size + 160, 110, 55, 40)
         self.brush_down_button = pygame.Rect(self.display_size + 225, 110, 55, 40)
         
@@ -86,12 +87,8 @@ class DrawingHarness:
             return
 
         try:
-            # Convert back to 0-255 range (uint8)
-            # The model expects 0-255. Our downscaled is 0-127.
-            data_to_send = (self.downscaled.astype(np.uint16) * 2).astype(np.uint8)
-            
-            # Flatten to 1D array (784 bytes)
-            flat_data = data_to_send.flatten()
+            # CHANGED: Direct send of uint8 data (no scaling needed)
+            flat_data = self.downscaled.flatten()
             
             # Send bytes
             bytes_written = self.ser.write(flat_data.tobytes())
@@ -106,7 +103,7 @@ class DrawingHarness:
     def clear_canvas(self):
         """Clear the drawing canvas"""
         self.canvas = np.zeros((self.canvas_size, self.canvas_size), dtype=np.uint8)
-        self.downscaled = np.zeros((28, 28), dtype=np.int8)
+        self.downscaled = np.zeros((28, 28), dtype=np.uint8)
         self.last_pos = None
         
     def draw_at_canvas_pos(self, canvas_x, canvas_y, erase=False):
@@ -162,21 +159,17 @@ class DrawingHarness:
         self.last_pos = pos
     
     def downscale_image(self):
-        """Downscale the canvas to 28x28 int8 grayscale"""
+        """Downscale the canvas to 28x28 uint8 grayscale"""
         # Convert numpy array to PIL Image
         img = Image.fromarray(self.canvas, mode='L')
         
         # Resize to 28x28 using LANCZOS resampling for better quality
         img_resized = img.resize((28, 28), Image.Resampling.LANCZOS)
         
-        # Convert to numpy array (uint8 first to preserve 0-255 range)
-        img_array = np.array(img_resized, dtype=np.uint8)
+        # CHANGED: Keep range 0-255 and use uint8
+        self.downscaled = np.array(img_resized, dtype=np.uint8)
         
-        # Scale from 0-255 to 0-127 to fit properly in int8 range
-        # This prevents negative wraparound values
-        self.downscaled = (img_array // 2).astype(np.int8)
-        
-        print("\n28x28 Downscaled Image (int8):")
+        print("\n28x28 Downscaled Image (uint8):")
         print(self.downscaled)
         print(f"\nShape: {self.downscaled.shape}")
         print(f"Data type: {self.downscaled.dtype}")
@@ -190,10 +183,8 @@ class DrawingHarness:
         canvas_img = Image.fromarray(self.canvas, mode='L')
         canvas_img.save('canvas_original.png')
         
-        # Save 28x28 downscaled (convert back to uint8 for saving)
-        # Scale from 0-127 back to 0-255 for proper visualization
-        downscaled_uint8 = (self.downscaled * 2).astype(np.uint8)
-        downscaled_img = Image.fromarray(downscaled_uint8, mode='L')
+        # CHANGED: Save 28x28 downscaled (already in uint8 0-255 range)
+        downscaled_img = Image.fromarray(self.downscaled, mode='L')
         downscaled_img.save('downscaled_28x28.png')
         
         # Save numpy array as .npy file
@@ -240,7 +231,7 @@ class DrawingHarness:
         self.draw_button(self.clear_button, "Clear")
         self.draw_button(self.process_button, "Process")
         self.draw_button(self.save_button, "Save")
-        self.draw_button(self.send_button, "Send to FPGA", self.DARK_GRAY) # Draw Send Button
+        self.draw_button(self.send_button, "Send to FPGA", self.DARK_GRAY)
         self.draw_button(self.brush_up_button, "+", self.DARK_GRAY)
         self.draw_button(self.brush_down_button, "-", self.DARK_GRAY)
         
@@ -258,9 +249,8 @@ class DrawingHarness:
             preview_scale = 8
             for y in range(28):
                 for x in range(28):
-                    # Scale from int8 (0-127) back to display range (0-255)
-                    value = int(self.downscaled[y, x]) * 2
-                    value = max(0, min(255, value))  # Clamp to valid range
+                    # CHANGED: Use value directly (0-255)
+                    value = int(self.downscaled[y, x])
                     color = (value, value, value)
                     rect = pygame.Rect(
                         self.display_size + 20 + x * preview_scale,
@@ -378,4 +368,3 @@ class DrawingHarness:
 if __name__ == "__main__":
     app = DrawingHarness()
     app.run()
-

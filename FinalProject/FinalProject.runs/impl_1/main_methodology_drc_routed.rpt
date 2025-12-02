@@ -1,0 +1,426 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Mon Dec  1 17:00:41 2025
+| Host         : CS152B-08 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file main_methodology_drc_routed.rpt -pb main_methodology_drc_routed.pb -rpx main_methodology_drc_routed.rpx
+| Design       : main
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 78
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| SYNTH-12  | Warning  | DSP input not registered      | 53         |
+| TIMING-18 | Warning  | Missing input or output delay | 25         |
++-----------+----------+-------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+SYNTH-12#1 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[0].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#2 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[10].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#3 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[11].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#4 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[13].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#5 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[14].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#6 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[15].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#7 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[17].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#8 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[18].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#9 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[19].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#10 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[1].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#11 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[20].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#12 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[21].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#13 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[22].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#14 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[23].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#15 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[24].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#16 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[25].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#17 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[26].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#18 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[27].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#19 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[28].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#20 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[29].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#21 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[30].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#22 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[31].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#23 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[32].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#24 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[33].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#25 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[34].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#26 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[35].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#27 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[36].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#28 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[37].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#29 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[38].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#30 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[39].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#31 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[3].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#32 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[40].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#33 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[41].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#34 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[42].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#35 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[43].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#36 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[44].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#37 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[45].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#38 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[46].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#39 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[47].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#40 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[48].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#41 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[49].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#42 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[4].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#43 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[50].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#44 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[54].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#45 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[57].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#46 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[58].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#47 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[5].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#48 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[62].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#49 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[63].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#50 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[6].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#51 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[7].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#52 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[8].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+SYNTH-12#53 Warning
+DSP input not registered  
+DSP instance ml_core/gen_dsp[9].u_dsp/dsp_macro is not fully pipelined on the input side. AREG/BREG/CREG/DREG are not used.
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on RsRx relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on reset relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An output delay is missing on led[0] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An output delay is missing on led[10] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An output delay is missing on led[11] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An output delay is missing on led[12] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An output delay is missing on led[13] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An output delay is missing on led[14] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An output delay is missing on led[15] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An output delay is missing on led[1] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An output delay is missing on led[2] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An output delay is missing on led[3] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An output delay is missing on led[4] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An output delay is missing on led[5] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#15 Warning
+Missing input or output delay  
+An output delay is missing on led[6] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#16 Warning
+Missing input or output delay  
+An output delay is missing on led[7] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#17 Warning
+Missing input or output delay  
+An output delay is missing on led[8] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#18 Warning
+Missing input or output delay  
+An output delay is missing on led[9] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#19 Warning
+Missing input or output delay  
+An output delay is missing on seg[0] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#20 Warning
+Missing input or output delay  
+An output delay is missing on seg[1] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#21 Warning
+Missing input or output delay  
+An output delay is missing on seg[2] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#22 Warning
+Missing input or output delay  
+An output delay is missing on seg[3] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#23 Warning
+Missing input or output delay  
+An output delay is missing on seg[4] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#24 Warning
+Missing input or output delay  
+An output delay is missing on seg[5] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#25 Warning
+Missing input or output delay  
+An output delay is missing on seg[6] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+

@@ -2,6 +2,16 @@
 2018.2
 Jun 14 2018
 20:41:02
-C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.sim/sim_1/behav/xsim/glbl.v,1529022455,verilog,,,,glbl,,,,,,,,
-C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sim_1/new/7_segment_test.v,1762974567,verilog,,,,segment_display_test,,,,,,,,
-C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v,1762973985,verilog,,C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sim_1/new/7_segment_test.v,,ClockDivider;SegmentDisplayDriver;main,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.sim/sim_1/behav/xsim/glbl.v,1764615759,verilog,,,,glbl,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/7_segment_test.v,1764615759,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/tb_ComputeUnit.v,,segment_display_test,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/tb_ComputeEngine.v,1764634648,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/tb_test.v,,tb_ComputeEngine,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/tb_ComputeUnit.v,1764629651,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/tb_ComputeEngine.v,,tb_ComputeUnit,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/tb_test.v,1764633476,verilog,,,,tb_ComputeUnit_Verification,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/bram.v,1764618337,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v,,ImageRam,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v,1764634403,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_unit.v,,ComputeEngine,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_unit.v,1764633917,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/hidden_ram.v,,ComputeUnit,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/hidden_ram.v,1764618337,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/seven_segment_driver.v,,HiddenRam,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v,1764627577,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sim_1/new/7_segment_test.v,,main,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/seven_segment_driver.v,1764623495,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v,,SegmentDisplayDriver,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v,1764622576,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v,,UartRx,,,,,,,,
+C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v,1764621414,verilog,,C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v,,ShiftRam;WeightRamWideL1;WeightRamWideL2,,,,,,,,
