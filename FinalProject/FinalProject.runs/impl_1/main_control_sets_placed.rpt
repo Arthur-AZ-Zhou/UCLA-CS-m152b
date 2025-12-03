@@ -1,0 +1,95 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Mon Dec  1 14:30:33 2025
+| Host         : CS152B-09 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
+| Design       : main
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    27 |
+| Unused register locations in slices containing registers |    86 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            9 |
+|      4 |            1 |
+|      8 |            2 |
+|     14 |            2 |
+|    16+ |           13 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              28 |            7 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              20 |            6 |
+| Yes          | No                    | No                     |             208 |           58 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |            4282 |          557 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------+---------------------------------------+---------------------------------------------+------------------+----------------+
+|   Clock Signal  |             Enable Signal             |               Set/Reset Signal              | Slice Load Count | Bel Load Count |
++-----------------+---------------------------------------+---------------------------------------------+------------------+----------------+
+|  clk_25mhz_BUFG | uart_inst/p_0_in[5]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[4]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[0]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[2]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[3]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[6]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[1]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | uart_inst/p_0_in[7]                   |                                             |                1 |              2 |
+|  clk_25mhz_BUFG | ml_core/done_i_1_n_0                  | reset_IBUF                                  |                1 |              2 |
+|  clk_IBUF_BUFG  |                                       |                                             |                1 |              4 |
+|  clk_25mhz_BUFG | uart_inst/bit_tick_counter[3]_i_1_n_0 |                                             |                3 |              8 |
+|  clk_25mhz_BUFG | ml_core/predicted_digit[3]_i_1_n_0    |                                             |                1 |              8 |
+|  clk_25mhz_BUFG | ml_core/hidden_addr[6]_i_1_n_0        |                                             |                4 |             14 |
+|  clk_25mhz_BUFG | ml_core/w2_addr_reg_rep_0_i_1_n_0     |                                             |                6 |             14 |
+|  clk_25mhz_BUFG | uart_inst/clock_counter[7]_i_2_n_0    | uart_inst/clock_counter                     |                2 |             16 |
+|  clk_25mhz_BUFG | uart_inst/data[7]_i_1_n_0             | reset_IBUF                                  |                2 |             16 |
+|  clk_25mhz_BUFG | ml_core/w1_addr[10]_i_2_n_0           | ml_core/w1_addr[10]_i_1_n_0                 |                5 |             16 |
+|  clk_25mhz_BUFG | ml_core/E[0]                          | reset_IBUF                                  |                5 |             16 |
+|  clk_25mhz_BUFG |                                       | reset_IBUF                                  |                6 |             20 |
+|  clk_25mhz_BUFG | uart_inst/E[0]                        | reset_IBUF                                  |                3 |             20 |
+|  clk_25mhz_BUFG | ml_core/img_addr[9]_i_1_n_0           | reset_IBUF                                  |                7 |             20 |
+|  clk_25mhz_BUFG | ml_core/pixel_counter[9]_i_1_n_0      | reset_IBUF                                  |                6 |             20 |
+|  clk_25mhz_BUFG | ml_core/save_counter[6]_i_1_n_0       | reset_IBUF                                  |                6 |             20 |
+|  clk_25mhz_BUFG |                                       |                                             |                6 |             24 |
+|  clk_25mhz_BUFG | ml_core/hidden_wdata[31]_i_2_n_0      | ml_core/dsp_gen[51].cu/hidden_wdata_reg[31] |                8 |             40 |
+|  clk_25mhz_BUFG | ml_core/cu_pixel_in[7]_i_1_n_0        |                                             |               36 |            148 |
+|  clk_25mhz_BUFG | ml_core/cu_enable_reg_n_0             | ml_core/cu_reset                            |              512 |           4096 |
++-----------------+---------------------------------------+---------------------------------------------+------------------+----------------+
+
+

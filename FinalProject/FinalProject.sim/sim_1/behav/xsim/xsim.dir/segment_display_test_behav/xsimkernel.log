@@ -1,0 +1,4 @@
+Running: xsim.dir/segment_display_test_behav/xsimk.exe -simmode gui -wdb segment_display_test_behav.wdb -simrunnum 0 -socket 56528
+Design successfully loaded
+Design Loading Memory Usage: 8292 KB (Peak: 8292 KB)
+Design Loading CPU Usage: 0 ms
