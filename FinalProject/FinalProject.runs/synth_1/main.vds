@@ -2,12 +2,12 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Mon Dec  1 16:57:52 2025
-# Process ID: 11796
-# Current directory: C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.runs/synth_1
+# Start of session at: Wed Dec  3 10:40:57 2025
+# Process ID: 4136
+# Current directory: C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.runs/synth_1
 # Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
-# Log file: C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.runs/synth_1/main.vds
-# Journal file: C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.runs/synth_1\vivado.jou
+# Log file: C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.runs/synth_1/main.vds
+# Journal file: C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source main.tcl -notrace
 Command: synth_design -top main -part xc7a35tcpg236-1
@@ -15,24 +15,24 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 24748 
+INFO: Helper process launched with PID 23852 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 435.070 ; gain = 94.980
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 436.809 ; gain = 94.098
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v:3]
-INFO: [Synth 8-6157] synthesizing module 'UartRx' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v:1]
+INFO: [Synth 8-6157] synthesizing module 'main' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v:3]
+INFO: [Synth 8-6157] synthesizing module 'UartRx' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v:1]
 	Parameter OVERSAMPLE_TIMER_MAX bound to: 53 - type: integer 
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter START bound to: 1 - type: integer 
 	Parameter DATA bound to: 2 - type: integer 
 	Parameter STOP bound to: 3 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v:41]
-INFO: [Synth 8-6155] done synthesizing module 'UartRx' (1#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v:1]
-INFO: [Synth 8-6157] synthesizing module 'ImageRam' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/bram.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'ImageRam' (2#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/bram.v:1]
-INFO: [Synth 8-6157] synthesizing module 'HiddenRam' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/hidden_ram.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'HiddenRam' (3#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/hidden_ram.v:6]
-INFO: [Synth 8-6157] synthesizing module 'ComputeEngine' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v:41]
+INFO: [Synth 8-6155] done synthesizing module 'UartRx' (1#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/uart_rx.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ImageRam' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/bram.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ImageRam' (2#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/bram.v:1]
+INFO: [Synth 8-6157] synthesizing module 'HiddenRam' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/hidden_ram.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'HiddenRam' (3#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/hidden_ram.v:6]
+INFO: [Synth 8-6157] synthesizing module 'ComputeEngine' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:3]
 	Parameter S_IDLE bound to: 0 - type: integer 
 	Parameter S_L1_LOAD_PARAM bound to: 1 - type: integer 
 	Parameter S_L1_COMPUTE bound to: 2 - type: integer 
@@ -42,7 +42,7 @@ INFO: [Synth 8-6157] synthesizing module 'ComputeEngine' [C:/Users/Student/Docum
 	Parameter S_L2_COMPUTE bound to: 5 - type: integer 
 	Parameter S_L2_RESOLVE bound to: 6 - type: integer 
 	Parameter S_DONE bound to: 7 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'ComputeUnit' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_unit.v:118]
+INFO: [Synth 8-6157] synthesizing module 'ComputeUnit' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_unit.v:118]
 INFO: [Synth 8-6157] synthesizing module 'DSP48E1' [C:/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:3430]
 	Parameter ACASCREG bound to: 0 - type: integer 
 	Parameter ADREG bound to: 1 - type: integer 
@@ -75,23 +75,23 @@ INFO: [Synth 8-6157] synthesizing module 'DSP48E1' [C:/Xilinx/Vivado/2018.2/scri
 	Parameter USE_PATTERN_DETECT bound to: NO_PATDET - type: string 
 	Parameter USE_SIMD bound to: ONE48 - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'DSP48E1' (4#1) [C:/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:3430]
-INFO: [Synth 8-6155] done synthesizing module 'ComputeUnit' (5#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_unit.v:118]
-INFO: [Synth 8-6157] synthesizing module 'WeightRamWideL1' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:8]
-INFO: [Synth 8-3876] $readmem data file 'weights_l1.mem' is read successfully [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:18]
-INFO: [Synth 8-6155] done synthesizing module 'WeightRamWideL1' (6#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:8]
-INFO: [Synth 8-6157] synthesizing module 'WeightRamWideL2' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:31]
-INFO: [Synth 8-3876] $readmem data file 'weights_l2.mem' is read successfully [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:41]
-INFO: [Synth 8-6155] done synthesizing module 'WeightRamWideL2' (7#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:31]
-INFO: [Synth 8-6157] synthesizing module 'ShiftRam' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:55]
-INFO: [Synth 8-3876] $readmem data file 'shifts.mem' is read successfully [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:63]
-INFO: [Synth 8-6155] done synthesizing module 'ShiftRam' (8#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:55]
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:116]
-WARNING: [Synth 8-6014] Unused sequential element tmp_raw_acc_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:172]
-WARNING: [Synth 8-6014] Unused sequential element tmp_shifted_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:174]
-WARNING: [Synth 8-6014] Unused sequential element tmp_clipped_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:176]
-WARNING: [Synth 8-6014] Unused sequential element tmp_final_val_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:252]
-INFO: [Synth 8-6155] done synthesizing module 'ComputeEngine' (9#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:3]
-INFO: [Synth 8-6157] synthesizing module 'SegmentDisplayDriver' [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/seven_segment_driver.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ComputeUnit' (5#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_unit.v:118]
+INFO: [Synth 8-6157] synthesizing module 'WeightRamWideL1' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:8]
+INFO: [Synth 8-3876] $readmem data file 'weights_l1.mem' is read successfully [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'WeightRamWideL1' (6#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:8]
+INFO: [Synth 8-6157] synthesizing module 'WeightRamWideL2' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:31]
+INFO: [Synth 8-3876] $readmem data file 'weights_l2.mem' is read successfully [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:41]
+INFO: [Synth 8-6155] done synthesizing module 'WeightRamWideL2' (7#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:31]
+INFO: [Synth 8-6157] synthesizing module 'ShiftRam' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:55]
+INFO: [Synth 8-3876] $readmem data file 'shifts.mem' is read successfully [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:63]
+INFO: [Synth 8-6155] done synthesizing module 'ShiftRam' (8#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:55]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:116]
+WARNING: [Synth 8-6014] Unused sequential element tmp_raw_acc_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:172]
+WARNING: [Synth 8-6014] Unused sequential element tmp_shifted_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:174]
+WARNING: [Synth 8-6014] Unused sequential element tmp_clipped_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:176]
+WARNING: [Synth 8-6014] Unused sequential element tmp_final_val_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:252]
+INFO: [Synth 8-6155] done synthesizing module 'ComputeEngine' (9#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:3]
+INFO: [Synth 8-6157] synthesizing module 'SegmentDisplayDriver' [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/seven_segment_driver.v:1]
 	Parameter LIGHT_ZERO bound to: 7'b1000000 
 	Parameter LIGHT_ONE bound to: 7'b1111001 
 	Parameter LIGHT_TWO bound to: 7'b0100100 
@@ -102,8 +102,8 @@ INFO: [Synth 8-6157] synthesizing module 'SegmentDisplayDriver' [C:/Users/Studen
 	Parameter LIGHT_SEVEN bound to: 7'b1111000 
 	Parameter LIGHT_EIGHT bound to: 7'b0000000 
 	Parameter LIGHT_NINE bound to: 7'b0010000 
-INFO: [Synth 8-6155] done synthesizing module 'SegmentDisplayDriver' (10#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/seven_segment_driver.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'main' (11#1) [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'SegmentDisplayDriver' (10#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/seven_segment_driver.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'main' (11#1) [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/main.v:3]
 WARNING: [Synth 8-3331] design ComputeEngine has unconnected port hid_rdata[31]
 WARNING: [Synth 8-3331] design ComputeEngine has unconnected port hid_rdata[30]
 WARNING: [Synth 8-3331] design ComputeEngine has unconnected port hid_rdata[29]
@@ -129,7 +129,7 @@ WARNING: [Synth 8-3331] design ComputeEngine has unconnected port hid_rdata[10]
 WARNING: [Synth 8-3331] design ComputeEngine has unconnected port hid_rdata[9]
 WARNING: [Synth 8-3331] design ComputeEngine has unconnected port hid_rdata[8]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 492.250 ; gain = 152.160
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.344 ; gain = 150.633
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -142,10 +142,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 492.250 ; gain = 152.160
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.344 ; gain = 150.633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 492.250 ; gain = 152.160
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 493.344 ; gain = 150.633
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 64 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -154,39 +154,39 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc]
-Finished Parsing XDC File [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
+Parsing XDC File [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc]
+Finished Parsing XDC File [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 834.152 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 836.641 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 834.152 ; gain = 494.062
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 836.641 ; gain = 493.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 834.152 ; gain = 494.062
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 836.641 ; gain = 493.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 834.152 ; gain = 494.062
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 836.641 ; gain = 493.930
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'UartRx'
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "bit_tick_counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:22]
-WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:45]
+WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:22]
+WARNING: [Synth 8-6014] Unused sequential element data_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/weight_roms.v:45]
 INFO: [Synth 8-5544] ROM "rom" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ComputeEngine'
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
@@ -219,7 +219,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'ComputeEngine'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 834.152 ; gain = 494.062
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 836.641 ; gain = 493.930
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -391,8 +391,8 @@ Warning: Parallel synthesis criteria is not met
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "max_logit" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element w1_addr_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:49]
-WARNING: [Synth 8-6014] Unused sequential element w2_addr_reg was removed.  [C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:50]
+WARNING: [Synth 8-6014] Unused sequential element w1_addr_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:49]
+WARNING: [Synth 8-6014] Unused sequential element w2_addr_reg was removed.  [C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/sources_1/new/compute_engine.v:50]
 WARNING: [Synth 8-3917] design main has port an[3] driven by constant 1
 WARNING: [Synth 8-3917] design main has port an[2] driven by constant 1
 WARNING: [Synth 8-3917] design main has port an[1] driven by constant 1
@@ -443,7 +443,7 @@ WARNING: [Synth 8-3332] Sequential element (rom_s/data_reg[2]) is unused and wil
 WARNING: [Synth 8-3332] Sequential element (current_shift_reg[4]) is unused and will be removed from module ComputeEngine.
 WARNING: [Synth 8-3332] Sequential element (current_shift_reg[2]) is unused and will be removed from module ComputeEngine.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 834.152 ; gain = 494.062
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 836.641 ; gain = 493.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -518,13 +518,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 907.531 ; gain = 567.441
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 907.109 ; gain = 564.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 1072.020 ; gain = 731.930
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1074.652 ; gain = 731.941
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -553,7 +553,7 @@ Start Technology Mapping
 INFO: [Synth 8-4480] The timing for the instance img_ram_inst/ram_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 INFO: [Synth 8-4480] The timing for the instance hid_ram_inst/ram_reg (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -577,7 +577,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:39 ; elapsed = 00:00:42 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -590,7 +590,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -602,25 +602,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -764,11 +764,11 @@ Report Instance Areas:
 |71    |  uart_inst             |UartRx               |    73|
 +------+------------------------+---------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1075.707 ; gain = 732.996
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 36 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 1073.059 ; gain = 391.066
-Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1073.059 ; gain = 732.969
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:33 . Memory (MB): peak = 1075.707 ; gain = 389.699
+Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1075.707 ; gain = 732.996
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 524 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -780,9 +780,9 @@ No Unisim elements were transformed.
 INFO: [Common 17-83] Releasing license: Synthesis
 114 Infos, 64 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1073.059 ; gain = 745.508
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1075.707 ; gain = 745.547
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.runs/synth_1/main.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.runs/synth_1/main.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1073.059 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Dec  1 16:58:44 2025...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.034 . Memory (MB): peak = 1075.707 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  3 10:41:47 2025...

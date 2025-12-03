@@ -12,7 +12,7 @@ class DrawingHarness:
         
         # UART Settings
         self.ser = None
-        self.COM_PORT = 'COM42' # CHANGE THIS to your actual port
+        self.COM_PORT = 'COM3' # CHANGE THIS to your actual port
         self.BAUD_RATE = 115200
         
         # Canvas settings

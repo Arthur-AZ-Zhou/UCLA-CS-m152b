@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<webTalkData  fileName='usage_statistics_webtalk.xml'  majorVersion='1' minorVersion='0' timeStamp='Mon Dec  1 17:00:55 2025'>
+<webTalkData  fileName='usage_statistics_webtalk.xml'  majorVersion='1' minorVersion='0' timeStamp='Wed Dec  3 10:43:54 2025'>
 <section name="__ROOT__" level="0" order="1" description="">
  <section name="software_version_and_target_device" level="1" order="1" description="">
   <keyValuePair key="beta" value="FALSE" description="" />
   <keyValuePair key="build_version" value="2258646" description="" />
-  <keyValuePair key="date_generated" value="Mon Dec  1 17:00:55 2025" description="" />
+  <keyValuePair key="date_generated" value="Wed Dec  3 10:43:54 2025" description="" />
   <keyValuePair key="os_platform" value="WIN64" description="" />
   <keyValuePair key="product_version" value="Vivado v2018.2 (64-bit)" description="" />
   <keyValuePair key="project_id" value="6c8a4c6f4ffa4090b65cf72d26a8b3fb" description="" />
-  <keyValuePair key="project_iteration" value="15" description="" />
-  <keyValuePair key="random_id" value="b4e95761-cd2f-4ef8-a309-cd7f1ef2386a" description="" />
+  <keyValuePair key="project_iteration" value="16" description="" />
+  <keyValuePair key="random_id" value="1516ff9e-8d82-4159-9f0a-89cad562c691" description="" />
   <keyValuePair key="registration_id" value="211888400_0_0_236" description="" />
   <keyValuePair key="route_design" value="TRUE" description="" />
   <keyValuePair key="target_device" value="xc7a35t" description="" />
@@ -150,7 +150,7 @@
    <keyValuePair key="output_load" value="5.000000" description="" />
    <keyValuePair key="output_toggle" value="12.500000" description="" />
    <keyValuePair key="package" value="cpg236" description="" />
-   <keyValuePair key="pct_clock_constrained" value="3.000000" description="" />
+   <keyValuePair key="pct_clock_constrained" value="2.000000" description="" />
    <keyValuePair key="pct_inputs_defined" value="33" description="" />
    <keyValuePair key="platform" value="nt64" description="" />
    <keyValuePair key="process" value="typical" description="" />
@@ -526,10 +526,10 @@
    <keyValuePair key="-verilog_define" value="default::[not_specified]" description="" />
   </section>
   <section name="usage" level="2" order="2" description="">
-   <keyValuePair key="elapsed" value="00:00:45s" description="" />
+   <keyValuePair key="elapsed" value="00:00:42s" description="" />
    <keyValuePair key="hls_ip" value="0" description="" />
-   <keyValuePair key="memory_gain" value="744.480MB" description="" />
-   <keyValuePair key="memory_peak" value="1073.059MB" description="" />
+   <keyValuePair key="memory_gain" value="744.520MB" description="" />
+   <keyValuePair key="memory_peak" value="1075.707MB" description="" />
   </section>
  </section>
  <section name="unisim_transformation" level="1" order="10" description="">
@@ -586,9 +586,9 @@
    <keyValuePair key="cmdmsgdialog_ok" value="5" description="" />
    <keyValuePair key="confirmsavetexteditsdialog_no" value="2" description="" />
    <keyValuePair key="createsrcfiledialog_file_name" value="3" description="" />
-   <keyValuePair key="filesetpanel_file_set_panel_tree" value="169" description="" />
+   <keyValuePair key="filesetpanel_file_set_panel_tree" value="170" description="" />
    <keyValuePair key="floatingtopdialog_ignore_and_continue_with_invalid_top" value="1" description="" />
-   <keyValuePair key="flownavigatortreepanel_flow_navigator_tree" value="95" description="" />
+   <keyValuePair key="flownavigatortreepanel_flow_navigator_tree" value="96" description="" />
    <keyValuePair key="hcodeeditor_search_text_combo_box" value="2" description="" />
    <keyValuePair key="hjfilechooserhelpers_refresh_folder_view_to_reflect_external" value="2" description="" />
    <keyValuePair key="logmonitor_monitor" value="20" description="" />
@@ -632,7 +632,7 @@
    <keyValuePair key="srcmenu_ip_hierarchy" value="9" description="" />
    <keyValuePair key="srcmenu_refresh_hierarchy" value="1" description="" />
    <keyValuePair key="statemonitor_reset_run" value="1" description="" />
-   <keyValuePair key="syntheticagettingstartedview_recent_projects" value="1" description="" />
+   <keyValuePair key="syntheticagettingstartedview_recent_projects" value="2" description="" />
    <keyValuePair key="syntheticastatemonitor_cancel" value="2" description="" />
    <keyValuePair key="taskbanner_close" value="12" description="" />
    <keyValuePair key="tclconsoleview_copy" value="1" description="" />
@@ -646,7 +646,7 @@
    <keyValuePair key="launchprogramfpga" value="15" description="" />
    <keyValuePair key="openhardwaremanager" value="9" description="" />
    <keyValuePair key="openrecenttarget" value="3" description="" />
-   <keyValuePair key="runbitgen" value="21" description="" />
+   <keyValuePair key="runbitgen" value="22" description="" />
    <keyValuePair key="runimplementation" value="24" description="" />
    <keyValuePair key="runsynthesis" value="4" description="" />
    <keyValuePair key="savefileproxyhandler" value="2" description="" />
@@ -658,7 +658,7 @@
    <keyValuePair key="viewtaskimplementation" value="4" description="" />
   </section>
   <section name="other_data" level="2" order="3" description="">
-   <keyValuePair key="guimode" value="4" description="" />
+   <keyValuePair key="guimode" value="5" description="" />
   </section>
   <section name="project_data" level="2" order="4" description="">
    <keyValuePair key="constraintsetcount" value="1" description="" />

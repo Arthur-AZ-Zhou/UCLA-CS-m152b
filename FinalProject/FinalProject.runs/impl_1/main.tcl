@@ -60,23 +60,21 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.cache/wt [current_project]
-  set_property parent.project_path C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.xpr [current_project]
-  set_property ip_output_repo C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.cache/ip [current_project]
+  set_property webtalk.parent_dir {C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.cache/wt} [current_project]
+  set_property parent.project_path {C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.xpr} [current_project]
+  set_property ip_output_repo {{C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.cache/ip}} [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.runs/synth_1/main.dcp
-  read_xdc C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc
+  add_files -quiet {{C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.runs/synth_1/main.dcp}}
+  read_xdc {{C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc}}
   link_design -top main -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

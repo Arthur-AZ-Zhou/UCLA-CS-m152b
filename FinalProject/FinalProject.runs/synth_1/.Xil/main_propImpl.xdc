@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/Student/Documents/UCLA-CS-m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc rfile:../../../FinalProject.srcs/constrs_1/new/Basys3_Master.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:{C:/Users/Student/Will Arthur Jimmy CS m152b/FinalProject/FinalProject.srcs/constrs_1/new/Basys3_Master.xdc} rfile:../../../FinalProject.srcs/constrs_1/new/Basys3_Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN W5 [get_ports clk]
 set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
